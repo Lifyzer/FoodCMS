@@ -17,8 +17,6 @@ use Psr\Container\ContainerInterface;
 
 class Container implements ContainerInterface
 {
-    public const LOGGING_CHANNEL = 'app-logs';
-
     /** @var Providable */
     private $provider = [];
 

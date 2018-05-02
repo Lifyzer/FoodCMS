@@ -26,7 +26,7 @@ Debug::initializeMode();
 $container = new Container();
 $container->register(TwigContainer::class, new TwigContainer());
 $container->register(DatabaseContainer::class, new DatabaseContainer());
-$container->register(MonologContainer::class, new MonologContainer(Container::LOGGING_CHANNEL));
+$container->register(MonologContainer::class, new MonologContainer(getenv('LOGGING_CHANNEL')));
 
 $dispatcher = require __DIR__ . '/Server/config/routes.php';
 $router = new Router($dispatcher, $container);
