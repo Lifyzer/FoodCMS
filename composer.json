@@ -13,7 +13,8 @@
   "config": {
     "vendor-dir": "Server/vendor",
     "bin-dir": "Server/vendor/bin",
-    "cache-dir": "Server/vendor/cache"
+    "cache-dir": "Server/vendor/cache",
+    "autoloader-suffix": "Lifyzer"
   },
   "require": {
     "php": ">=7.1.0",
