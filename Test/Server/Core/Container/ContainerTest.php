@@ -21,6 +21,8 @@ use Twig_Environment;
 
 class ContainerTest extends TestCase
 {
+    private const PROVIDER_NAME = 'my_container';
+
     /** @var Container */
     private $container;
 
@@ -29,14 +31,9 @@ class ContainerTest extends TestCase
         $this->container = new Container();
     }
 
-    public function testInstanceOfContainers(): void
-    {
-        $this->assertInstanceOf(Container::class, $this->container->setContainers());
-    }
-
     public function testGetExistentContainer(): void
     {
-        $this->container->setContainers();
+        $this->container->register(TwigContainer::class, new TwigContainer());
 
         $this->assertInstanceOf(Twig_Environment::class, $this->container->get(TwigContainer::class));
     }
@@ -56,7 +53,7 @@ class ContainerTest extends TestCase
 
         Phake::when($provider)->getService()->thenThrow(new ProviderException());
 
-        $this->container->register(TwigContainer::class, $provider);
-        $this->container->get(TwigContainer::class);
+        $this->container->register(self::PROVIDER_NAME, $provider);
+        $this->container->get(self::PROVIDER_NAME);
     }
 }

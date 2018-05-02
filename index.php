@@ -11,6 +11,9 @@ namespace Lifyzer;
 
 use Dotenv\Dotenv;
 use Lifyzer\Server\Core\Container\Container;
+use Lifyzer\Server\Core\Container\Provider\Database as DatabaseContainer;
+use Lifyzer\Server\Core\Container\Provider\Monolog as MonologContainer;
+use Lifyzer\Server\Core\Container\Provider\Twig as TwigContainer;
 use Lifyzer\Server\Core\Debug;
 use Lifyzer\Server\Core\Uri\Router;
 
@@ -21,7 +24,10 @@ define("SITE_NAME", getenv('SITE_NAME'));
 Debug::initializeMode();
 
 $container = new Container();
-$container->setContainers();
-$dispatcher = require  __DIR__ . '/Server/config/routes.php';
+$container->register(TwigContainer::class, new TwigContainer());
+$container->register(DatabaseContainer::class, new DatabaseContainer());
+$container->register(MonologContainer::class, new MonologContainer(Container::LOGGING_CHANNEL));
+
+$dispatcher = require __DIR__ . '/Server/config/routes.php';
 $router = new Router($dispatcher, $container);
 $router->dispatch();
