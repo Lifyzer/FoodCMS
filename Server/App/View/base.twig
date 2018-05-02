@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ siteName }} - {{ pageName }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="<?= asset_url('css/style.css') ?>">
+    <?php include 'analytics.inc.php' ?>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<?php if (!Core\Route::isStripePage()): ?>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= getenv('SITE_NAME') ?></a>
+        <ul id="nav-mobile" class="right">
+            <?php if (!Core\User::isLoggedIn()): ?>
+            <li><a href="<?= site_url('signup') ?>" class="red-text text-lighten-3 bold underline">Sign Up</a></li>
+            <li><a href="<?= site_url('signin') ?>">Sign In</a></li>
+            <?php else: ?>
+            <li><a href="<?= site_url('edit') ?>">Edit Details</a></li>
+            <li><a href="<?= site_url('password') ?>">Change Password</a></li>
+            <li><a href="<?= site_url('signout') ?>">Sign Out</a></li>
+            <?php endif ?>
+        </ul>
+    </div>
+</nav>
+
+<?php if (Core\Route::isHomePage()): ?>
+<header class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <h2 class="header center orange-text">Get your Stripe Payment Link</h2>
+        <div class="row center">
+            <h5 class="header col s12 light">Get paid with just a simple link to share anywhere with anyone!</h5>
+        </div>
+    </div>
+</header>
+<?php endif ?>
+<?php endif ?>
+
+<section class="container center-block container-margin">
+{% block content %}
+{% endblock %}
+
+
+    <?php if (!Core\Route::isStripePage()): ?>
+</section>
+
+<footer class="page-footer light-blue">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Link<span class="underline">2</span>Payment</h5>
+                <p class="grey-text text-lighten-4">
+
+                </p>
+            </div>
+            <div class="col l3 s12">
+                <!-- Text Block -->
+            </div>
+            <div class="col l3 s12">
+                <!-- Text Block -->
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col l4 s12">
+                    Proud to be an <a class="red-text text-lighten-3" href="https://github.com/pH-7/Link2Payment">open source</a> project
+                </div>
+                <div class="col l6 s12">
+                    Made with ❤️ in Vancouver 🇨🇦 by <a class="red-text text-lighten-3" href="http://ph7.me">Pierre-Henry</a>
+                </div>
+                <div class="col l2 s12">
+                    <a class="red-text text-lighten-3" rel="nofollow" href="mailto:<?= getenv('ADMIN_EMAIL') ?>?subject=Regarding Link2Payment">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif ?>
+</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="<?= site_url('node_modules/materialize-css/dist/js/materialize.min.js') ?>"></script>
+<script src="https://cdn.jsdelivr.net/cookie-bar/1/cookiebar-latest.js"></script>
+<script src="<?= asset_url('js/common.js') ?>"></script>
+<script>
+    $(document).ready(function() {
+        // Enable Select since Materialize disables it
+        $('select').material_select();
+    });
+</script>
+</body>
+</html>

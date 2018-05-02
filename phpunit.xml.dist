@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+    bootstrap="Server/vendor/autoload.php"
+    verbose="true"
+    colors="true">
+    <testsuites>
+        <testsuite name="Lifyzer Webapp CMS">
+            <directory>test</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">Server</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true" showOnlySummary="true" />
+        <log type="coverage-html" target="coverage" />
+        <log type="coverage-clover" target="coverage/clover.xml" />
+    </logging>
+</phpunit>
