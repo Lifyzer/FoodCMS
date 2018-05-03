@@ -56,13 +56,14 @@ class Router
             case Dispatcher::FOUND:
                 $handler = $routeInfo[1];
                 $vars = $routeInfo[2];
-                $split = explode(self::METHOD_DELIMITER, $handler);
-                $controller = self::CONTROLLER_NAMESPACE . $split[0];
-                $method = $split[2];
+
+                // PHP 7.1 new "[]" list() syntax
+                [$controller, $method] = explode(self::METHOD_DELIMITER, $handler);
+                $controller = self::CONTROLLER_NAMESPACE . $controller;
                 try {
                     $reflection = new ReflectionMethod($controller, $method);
                     if ($reflection->isPublic()) {
-                        $reflection->invokeArgs(new $controller, $vars);
+                        $reflection->invokeArgs(new $controller($this->container), $vars);
                     }
                 } catch (ReflectionException $except) {
                     /** @var LoggerInterface $log */
