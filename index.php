@@ -20,8 +20,12 @@ use Lifyzer\Server\Core\Uri\Router;
 require __DIR__ . '/Server/vendor/autoload.php';
 
 (new Dotenv(__DIR__ . '/Server/config'))->load();
-define("SITE_NAME", getenv('SITE_NAME'));
+define('SITE_NAME', getenv('SITE_NAME'));
 Debug::initializeMode();
+
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
 
 $container = new Container();
 $container->register(TwigContainer::class, new TwigContainer());
