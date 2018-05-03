@@ -20,7 +20,7 @@ use ReflectionMethod;
 
 class Router
 {
-    private const CONTROLLER_NAMESPACE = 'Lifyzer\Controller\\';
+    private const CONTROLLER_NAMESPACE = 'Lifyzer\Server\App\Controller\\';
     private const METHOD_DELIMITER = '@';
 
     /** @var ContainerInterface */
