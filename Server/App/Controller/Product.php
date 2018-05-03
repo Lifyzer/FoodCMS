@@ -27,7 +27,7 @@ class Product extends Base
            self::ADD_PRODUCT_FILENAME,
            [
                'siteName' => SITE_NAME,
-               'pageName' => 'Add Product'
+               'pageName' => 'Add a Product'
            ]
        ) ;
     }
