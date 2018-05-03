@@ -38,13 +38,7 @@ class Router
     public function dispatch(): void
     {
         $httpMethod = $_SERVER['REQUEST_METHOD'];
-        $uri = $_SERVER['REQUEST_URI'];
-
-        if (false !== $pos = strpos($uri, '?')) {
-            $uri = substr($uri, 0, $pos);
-        }
-
-        $uri = rawurldecode($uri);
+        $uri = $this->uriCleanup($_SERVER['QUERY_STRING']);
 
         $routeInfo = $this->dispatcher->dispatch($httpMethod, $uri);
         switch ($routeInfo[0]) {
@@ -75,5 +69,21 @@ class Router
                 }
                 break;
         }
+    }
+
+    private function uriCleanup(string $uri): string
+    {
+        if (false !== $pos = strpos($uri, '?')) {
+            $uri = substr($uri, 0, $pos);
+        }
+
+        $uri = $this->addTrailingSlashIfNeeded($uri);
+
+        return rawurldecode($uri);
+    }
+
+    private function addTrailingSlashIfNeeded(string $uri): string
+    {
+        return substr($uri, -1) !== '/' ? $uri . '/' : $uri;
     }
 }
