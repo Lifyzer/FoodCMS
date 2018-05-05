@@ -12,11 +12,13 @@ namespace Lifyzer\Server\Core\Uri;
 
 use FastRoute\Dispatcher;
 use Lifyzer\Server\App\Controller\Error;
+use Lifyzer\Server\Core\Container\Provider\HttpRequest;
 use Lifyzer\Server\Core\Container\Provider\Monolog;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use ReflectionException;
 use ReflectionMethod;
+use Symfony\Component\HttpFoundation\Request;
 
 class Router
 {
@@ -37,8 +39,11 @@ class Router
 
     public function dispatch(): void
     {
-        $httpMethod = $_SERVER['REQUEST_METHOD'];
-        $uri = $this->uriCleanup($_SERVER['QUERY_STRING']);
+        /** @var Request $httpRequest */
+        $httpRequest = $this->container->get(HttpRequest::class);
+        $httpMethod = $httpRequest->getMethod();
+        $queryString = (string)$httpRequest->getQueryString();
+        $uri = $this->uriCleanup($queryString);
 
         $routeInfo = $this->dispatcher->dispatch($httpMethod, $uri);
         switch ($routeInfo[0]) {
