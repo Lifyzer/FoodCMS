@@ -12,6 +12,7 @@ namespace Lifyzer;
 use Dotenv\Dotenv;
 use Lifyzer\Server\Core\Container\Container;
 use Lifyzer\Server\Core\Container\Provider\Database as DatabaseContainer;
+use Lifyzer\Server\Core\Container\Provider\HttpRequest as HttpRequestContainer;
 use Lifyzer\Server\Core\Container\Provider\Monolog as MonologContainer;
 use Lifyzer\Server\Core\Container\Provider\Twig as TwigContainer;
 use Lifyzer\Server\Core\Debug;
@@ -30,6 +31,7 @@ $whoops->register();
 $container = new Container();
 $container->register(TwigContainer::class, new TwigContainer());
 $container->register(DatabaseContainer::class, new DatabaseContainer());
+$container->register(HttpRequestContainer::class, new HttpRequestContainer());
 $container->register(MonologContainer::class, new MonologContainer(getenv('LOGGING_CHANNEL')));
 
 $dispatcher = require __DIR__ . '/Server/config/routes.php';
