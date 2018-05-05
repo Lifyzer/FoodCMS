@@ -13,6 +13,7 @@ use Lifyzer\Server\Core\Container\Provider\Database;
 use Lifyzer\Server\Core\Container\Provider\Providable;
 use PDO;
 use Phake;
+use Phake_IMock;
 use PHPUnit\Framework\TestCase;
 
 class DatabaseTest extends TestCase

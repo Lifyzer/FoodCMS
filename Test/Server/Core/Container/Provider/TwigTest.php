@@ -12,6 +12,7 @@ namespace Lifyzer\Test\Server\Core\Container\Provider;
 use Lifyzer\Server\Core\Container\Provider\Providable;
 use Lifyzer\Server\Core\Container\Provider\Twig;
 use Phake;
+use Phake_IMock;
 use PHPUnit\Framework\TestCase;
 use Twig_Environment;
 
