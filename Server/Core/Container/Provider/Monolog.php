@@ -26,6 +26,7 @@ class Monolog implements Providable
     {
         $this->name = $name;
     }
+
     /**
      * @return LoggerInterface
      *
