@@ -40,3 +40,8 @@ abbr {
 img, video, iframe {
     max-width: 100%;
 }
+
+textarea {
+    width: 100% !important;
+    min-height: 8rem !important;
+}
