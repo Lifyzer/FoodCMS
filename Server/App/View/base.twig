@@ -18,48 +18,18 @@
 </head>
 <body>
 
-<?php if (!Core\Route::isStripePage()): ?>
-<nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= getenv('SITE_NAME') ?></a>
-        <ul id="nav-mobile" class="right">
-            <?php if (!Core\User::isLoggedIn()): ?>
-            <li><a href="<?= site_url('signup') ?>" class="red-text text-lighten-3 bold underline">Sign Up</a></li>
-            <li><a href="<?= site_url('signin') ?>">Sign In</a></li>
-            <?php else: ?>
-            <li><a href="<?= site_url('edit') ?>">Edit Details</a></li>
-            <li><a href="<?= site_url('password') ?>">Change Password</a></li>
-            <li><a href="<?= site_url('signout') ?>">Sign Out</a></li>
-            <?php endif ?>
-        </ul>
-    </div>
-</nav>
-
-<?php if (Core\Route::isHomePage()): ?>
-<header class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <h2 class="header center orange-text">Get your Stripe Payment Link</h2>
-        <div class="row center">
-            <h5 class="header col s12 light">Get paid with just a simple link to share anywhere with anyone!</h5>
-        </div>
-    </div>
-</header>
-<?php endif ?>
-<?php endif ?>
-
 <section class="container center-block container-margin">
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
+    <p>🍎 Healthy Food; Healthy Life 🍏</p>
 </section>
 
 <footer class="page-footer light-blue">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Link<span class="underline">2</span>Payment</h5>
-                <p class="grey-text text-lighten-4">
-
-                </p>
+                <h5 class="white-text"><span class="underline">Lifyzer</span> Healthy Food!</h5>
+                <p class="grey-text text-lighten-4"></p>
             </div>
             <div class="col l3 s12">
                 <!-- Text Block -->
