@@ -2,7 +2,9 @@ Server/vendor
 composer.lock
 composer.phar
 Server/config/.env
+Server/cache/*
 !Server/cache/.gitkeep
+Server/log/*
 !Server/log/.gitkeep
 
 # Log files
@@ -15,12 +17,12 @@ coverage
 # PhpStorm
 .idea
 
+
 ## OS ##
 
 # Linux
 *~
 *.swp
-# KDE
 .directory
 
 # Windows
@@ -28,6 +30,6 @@ ehthumbs.db
 Icon?
 Thumbs.db
 
-# Mac OS
+# Mac
 .DS_Store*
 ._*
