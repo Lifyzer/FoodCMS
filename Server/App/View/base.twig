@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="./theme/classic/css/common.css">
-    <?php include 'analytics.inc.php' ?>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -80,17 +79,15 @@
                     Made with ❤️ in Vancouver 🇨🇦 by <a class="red-text text-lighten-3" href="http://ph7.me">Pierre-Henry</a>
                 </div>
                 <div class="col l2 s12">
-                    <a class="red-text text-lighten-3" rel="nofollow" href="mailto:<?= getenv('ADMIN_EMAIL') ?>?subject=Regarding Link2Payment">Contact</a>
+                    <a class="red-text text-lighten-3" rel="nofollow" href="mailto:hello@lifyzer.com?subject=Regarding Lifyzer; Add a Product">Contact</a>
                 </div>
             </div>
         </div>
     </div>
-    <?php endif ?>
 </footer>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="<?= site_url('node_modules/materialize-css/dist/js/materialize.min.js') ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script src="https://cdn.jsdelivr.net/cookie-bar/1/cookiebar-latest.js"></script>
-<script src="<?= asset_url('js/common.js') ?>"></script>
 <script>
     $(document).ready(function() {
         // Enable Select since Materialize disables it
