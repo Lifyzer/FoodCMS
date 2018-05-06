@@ -23,7 +23,7 @@ class Database implements Providable
     {
         $details = $this->getDetails();
 
-        $driverOptions[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES ' . $details['charset'];
+        $driverOptions[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES {$details['charset']}";
         $pdo = new PDO("{$details['db_type']}:host={$details['host']};dbname={$details['name']};", $details['user'], $details['password'], $driverOptions);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
