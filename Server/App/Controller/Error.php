@@ -33,7 +33,6 @@ class Error extends Base
             'messages' => self::NOT_FOUND_MESSAGE
         ];
 
-        $this->view->display(
-            self::NOT_FOUND_FILENAME, $data);
+        $this->view->display(self::NOT_FOUND_FILENAME, $data);
     }
 }
