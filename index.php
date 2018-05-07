@@ -14,6 +14,7 @@ use Lifyzer\Server\Core\Container\Container;
 use Lifyzer\Server\Core\Container\Provider\Database as DatabaseContainer;
 use Lifyzer\Server\Core\Container\Provider\HttpRequest as HttpRequestContainer;
 use Lifyzer\Server\Core\Container\Provider\Monolog as MonologContainer;
+use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
 use Lifyzer\Server\Core\Container\Provider\Twig as TwigContainer;
 use Lifyzer\Server\Core\Debug;
 use Lifyzer\Server\Core\Uri\Router;
@@ -32,6 +33,7 @@ $container = new Container();
 $container->register(TwigContainer::class, new TwigContainer());
 $container->register(DatabaseContainer::class, new DatabaseContainer());
 $container->register(HttpRequestContainer::class, new HttpRequestContainer());
+$container->register(SwiftMailer::class, new SwiftMailer());
 $container->register(MonologContainer::class, new MonologContainer(getenv('LOGGING_CHANNEL')));
 
 $dispatcher = require __DIR__ . '/Server/config/routes.php';
