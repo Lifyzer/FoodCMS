@@ -1,0 +1,30 @@
+<p>
+    Hi there,<br />
+    Someone submitted a new product.
+</p>
+
+<p><strong>Details of the product below:</strong></p>
+<ul>
+    {% if barcode %}
+        <li>Barcode: {{ barcode }}</li>
+    {% endif %}
+    <li>Name: <strong>{{ name }}</strong></li>
+    <li>Ingredients: {{ ingredients }}</li>
+    <li>Sugars (100gr): {{ sugars }}</li>
+    <li>Carbohydrates (100gr): {{ carbohydrates }}</li>
+    <li>Saturated fat (100gr): {{ saturatedfat }}</li>
+    <li>Fiber (100gr): {{ fiber }}</li>
+    <li>Protein (100gr): {{ proteins }}</li>
+    <li>Salt (100gr): {{ salt }}</li>
+    <li>Sodium (100gr): {{ sodium }}</li>
+    <li>Alcohol (100gr): {{ alcohol }}</li>
+    <li>Healthy? {{ ishealthy }}</li>
+    <li>Organic? {{ isorganic }}</li>
+    <li>Image: <a href="{{ image }}" target="_blank" rel="noopener">{{ image }}</a></li>
+</ul>
+
+<hr />
+
+<p>
+    <a href="{{ approvalUrlHash }}" target="_blank" rel="noopener"><strong>Approve It</strong></a> | <a href="{{ disapprovalUrlHash }}" target="_blank" rel="noopener"><strong>Discard It</strong></a>
+</p>
