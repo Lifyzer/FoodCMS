@@ -9,9 +9,11 @@ declare(strict_types=1);
 
 namespace Lifyzer\Server\App\Controller;
 
+use Lifyzer\Server\Core\Container\Provider\HttpRequest;
 use Lifyzer\Server\Core\Container\Provider\Monolog;
 use Lifyzer\Server\Core\Container\Provider\Twig;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Twig_Environment;
 
 abstract class Base
@@ -22,9 +24,13 @@ abstract class Base
     /** @var Monolog */
     protected $log;
 
+    /** @var Request */
+    protected $httpRequest;
+
     public function __construct(ContainerInterface $container)
     {
         $this->view = $container->get(Twig::class);
         $this->log = $container->get(Monolog::class);
+        $this->httpRequest = $container->get(HttpRequest::class);
     }
 }
