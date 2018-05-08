@@ -10,10 +10,8 @@ declare(strict_types=1);
 
 namespace Lifyzer\Server\App\Controller;
 
-use Lifyzer\Server\Core\Container\Provider\Database;
-use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
 use Lifyzer\Server\App\Model\Product as ProductModel;
-use PDO;
+use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
 use Psr\Container\ContainerInterface;
 use Swift_Mailer;
 use Swift_Message;
