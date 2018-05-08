@@ -67,6 +67,7 @@ class Product extends Base
                 $this->sendEmail($data);
             } else {
                 header('Location: /');
+                exit;
             }
         }
 
@@ -74,6 +75,7 @@ class Product extends Base
             self::SUBMIT_PRODUCT_VIEW_FILE,
             [
                 'siteName' => SITE_NAME,
+                'siteUrl' => SITE_URL,
                 'pageName' => 'Add a Product',
                 'message' => 'Product successfully submitted'
             ]
@@ -129,7 +131,7 @@ class Product extends Base
     {
         return sprintf(
             '%sapprove/%s/%d',
-            getenv('SITE_URL'),
+            SITE_URL,
             getenv('SECURITY_HASH'),
             $productId
         );
@@ -139,7 +141,7 @@ class Product extends Base
     {
         return sprintf(
             '%sdisapprove/%s/%d',
-            getenv('SITE_URL'),
+            SITE_URL,
             getenv('SECURITY_HASH'),
             $productId
         );

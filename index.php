@@ -23,6 +23,7 @@ require __DIR__ . '/Server/vendor/autoload.php';
 
 (new Dotenv(__DIR__ . '/Server/config'))->load();
 define('SITE_NAME', getenv('SITE_NAME'));
+define('SITE_URL', getenv('SITE_URL'));
 Debug::initializeMode();
 
 $whoops = new \Whoops\Run;
