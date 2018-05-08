@@ -85,7 +85,7 @@ class Product extends Base
 
     public function approve(array $data): void
     {
-        if ($data['hash'] === getenv('SECURITY_HASH')) {
+        if ($this->isSecurityHashValid($data)) {
             $productId = (int)$data['id'];
             $this->productModel->moveToLive($productId);
             echo 'Approved! :)';
@@ -96,7 +96,7 @@ class Product extends Base
 
     public function disapprove(array $data): void
     {
-        if ($data['hash'] === getenv('SECURITY_HASH')) {
+        if ($this->isSecurityHashValid($data)) {
             $productId = (int)$data['id'];
             $this->productModel->discard($productId);
             echo 'Product discard! :(';
@@ -169,5 +169,10 @@ class Product extends Base
 
             return true;
         }
+    }
+
+    private function isSecurityHashValid(array $data): bool
+    {
+        return $data['hash'] === getenv('SECURITY_HASH');
     }
 }
