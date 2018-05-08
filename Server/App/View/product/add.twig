@@ -2,4 +2,93 @@
 
 {% block content %}
 
+    <h3 class="underline">{{ pageName }}</h3>
+
+    <form method="post" action="./submit">
+        <input type="hidden" name="addproduct" value="1">
+
+        {# Spambot prevention using a hidden field #}
+        <input type="type" name="firstname" class="nofield">
+
+        <p>
+            <label for="barcode">Barcode (if possible. optional)</label>
+            <input type="text" name="barcode" id="barcode">
+        </p>
+
+        <p>
+            <label for="name">Product Name</label>
+            <input type="text" name="name" id="name" placeholder="Barilla Spaghetti Pasta" required="required">
+        </p>
+
+        <p>
+            <label for="ingredients">Ingredients</label>
+            <textarea name="ingredients" id="ingredients" required="required"></textarea>
+        </p>
+
+        <p>
+            <label for="sugars">Sugars (100gr)</label>
+            <input type="number" name="sugars" id="sugars" required="required">
+        </p>
+
+        <p>
+            <label for="carbohydrates">Carbohydrates (100gr)</label>
+            <input type="number" name="carbohydrates" id="carbohydrates" required="required">
+        </p>
+
+        <p>
+            <label for="saturatedfat">Saturated fat (100gr)</label>
+            <input type="number" name="saturatedfat" id="saturatedfat" required="required">
+        </p>
+
+        <p>
+            <label for="fiber">Fiber (100gr)</label>
+            <input type="number" name="fiber" id="fiber" required="required">
+        </p>
+
+        <p>
+            <label for="protein">Protein (100gr)</label>
+            <input type="number" name="protein" id="protein" required="required">
+        </p>
+
+        <p>
+            <label for="salt">Salt (100gr)</label>
+            <input type="number" name="salt" id="salt" required="required">
+        </p>
+
+        <p>
+            <label for="sodium">Sodium (100gr)</label>
+            <input type="number" name="sodium" id="sodium" required="required">
+        </p>
+
+        <p>
+            <label for="alcohol">Alcohol (100gr)</label>
+            <input type="number" name="alcohol" id="alcohol" required="required">
+        </p>
+
+        <p>
+            <label>Is this Healthy?</label><br>
+            <input type="radio" name="ishealthy" value="no" id="nothealthy" checked="checked"> <label for="nothealthy">No</label>
+            <input type="radio" name="ishealthy" value="yes" id="healthy"> <label for="healthy">Yes</label>
+        </p>
+
+        <p>
+            <label>Is this Organic?</label><br>
+            <input type="radio" name="isorganic" value="no" id="notorganic" checked="checked"> <label for="notorganic">No</label>
+            <input type="radio" name="isorganic" value="yes" id="organic"> <label for="organic">Yes</label>
+        </p>
+
+        <p>
+            <label for="image">Product Image (uploaded at <a href="https://imgur.com/upload" target="_blank"
+                                                             rel="noopener noreferrer">https://imgur.com/upload</a>)</label>
+            <input type="url" name="image" id="image" placeholder="e.g. https://i.imgur.com/lyofIYjL2.jpg"
+                   required="required">
+        </p>
+
+        <p>
+            <button type="submit" class="bold waves-effect btn-large"
+                    onclick="return confirm('Are you sure these information are accurate?')">Submit The Product
+            </button>
+        </p>
+    </form>
+
 {% endblock %}
