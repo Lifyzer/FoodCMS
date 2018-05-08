@@ -42,13 +42,13 @@ class Product extends Base
 
     public function add(): void
     {
-       $this->view->display(
-           self::ADD_PRODUCT_VIEW_FILE,
-           [
-               'siteName' => SITE_NAME,
-               'pageName' => 'Add a Product'
-           ]
-       ) ;
+        $this->view->display(
+            self::ADD_PRODUCT_VIEW_FILE,
+            [
+                'siteName' => SITE_NAME,
+                'pageName' => 'Add a Product'
+            ]
+        );
     }
 
     public function submit(): void
@@ -78,7 +78,7 @@ class Product extends Base
                 'pageName' => 'Add a Product',
                 'message' => 'Product successfully submitted'
             ]
-        ) ;
+        );
     }
 
     public function approve(array $data): void
@@ -87,7 +87,7 @@ class Product extends Base
             $productId = (int)$data['id'];
             $this->productModel->moveToLive($productId);
             echo 'Approved! :)';
-        }  else {
+        } else {
             echo 'An error occurred...';
         }
     }

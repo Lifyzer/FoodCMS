@@ -36,7 +36,7 @@ class Monolog implements Providable
     {
         $log = new Logger($this->name);
         $streamHandler = new StreamHandler(
-            dirname(__DIR__, 3)  . self::LOG_PATH . $this->name . self::LOG_EXT,
+            dirname(__DIR__, 3) . self::LOG_PATH . $this->name . self::LOG_EXT,
             Logger::DEBUG
         );
         $log->pushHandler($streamHandler);

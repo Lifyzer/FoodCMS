@@ -10,7 +10,7 @@ namespace Lifyzer\Server;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 
-return simpleDispatcher(function(RouteCollector $route) {
+return simpleDispatcher(function (RouteCollector $route) {
     $route->addRoute('GET', '/', 'Product@add');
     $route->addRoute('GET', '/submit', 'Product@submit');
     $route->addRoute('GET', '/approve/{hash}/{id:\d+}', 'Product@approve');
