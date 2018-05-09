@@ -36,7 +36,7 @@ class Product extends Base
         parent::__construct($container);
 
         $this->mailer = $container->get(SwiftMailer::class);
-        $this->productModel = new ProductModel();
+        $this->productModel = new ProductModel($container);
     }
 
     public function add(): void
