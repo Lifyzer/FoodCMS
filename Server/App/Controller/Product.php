@@ -44,6 +44,7 @@ class Product extends Base
         $this->view->display(
             self::ADD_PRODUCT_VIEW_FILE,
             [
+                'siteUrl' => SITE_URL,
                 'siteName' => SITE_NAME,
                 'pageName' => 'Add a Product'
             ]
