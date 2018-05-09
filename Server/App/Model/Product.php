@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Lifyzer\Server\App\Model;
 
+use Lifyzer\Server\Core\Container\Provider\Database;
 use PDO;
 use Psr\Container\ContainerInterface;
 
