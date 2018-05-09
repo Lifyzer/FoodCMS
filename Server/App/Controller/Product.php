@@ -75,8 +75,8 @@ class Product extends Base
         $this->view->display(
             self::SUBMIT_PRODUCT_VIEW_FILE,
             [
-                'siteName' => SITE_NAME,
                 'siteUrl' => SITE_URL,
+                'siteName' => SITE_NAME,
                 'pageName' => 'Add a Product',
                 'message' => 'Product successfully submitted'
             ]
