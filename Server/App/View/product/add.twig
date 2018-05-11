@@ -78,9 +78,8 @@
         </p>
 
         <p>
-            <label for="image">Product Image (uploaded at <a href="https://imgur.com/upload" target="_blank"
-                                                             rel="noopener noreferrer">https://imgur.com/upload</a>)</label>
-            <input type="url" name="image" id="image" placeholder="e.g. https://i.imgur.com/lyofIYjL2.jpg"
+            <label for="image">Product Image (uploaded at <a href="https://imgur.com/upload" target="_blank" rel="noopener noreferrer">https://imgur.com/upload</a>)</label>
+            <input type="url" name="image" id="image" pattern="https?://i.imgur.com/[\w]{3,}\.[a-zA-Z]{3,4}" title="Please enter the image URL uploaded at imgur.com" placeholder="e.g. https://i.imgur.com/lyofIYjL2.jpg"
                    required="required">
         </p>
 
