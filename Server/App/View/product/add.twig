@@ -84,10 +84,16 @@
         </p>
 
         <p>
-            <button type="submit" class="bold waves-effect btn-large"
-                    onclick="return confirm('Are you sure these information are accurate?')">Submit The Product
-            </button>
+            <button type="submit" class="bold waves-effect btn-large">Submit The Product</button>
         </p>
     </form>
+
+    <script>
+        $(document).ready(function() {
+            $('form button[type=submit]').click(function() {
+                return confirm('Are you sure these information are accurate?');
+            });
+        });
+    </script>
 
 {% endblock %}
