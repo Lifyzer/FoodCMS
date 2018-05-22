@@ -1,2 +1,6 @@
-<p>Product successfully submitted.</p>
-<p>You can <a href="{{ siteUrl }}">add another one</a> (if you wish, or course!) 😊</p>
+{% extends "base.twig" %}
+
+{% block content %}
+    <p>Product successfully submitted.</p>
+    <p>You can <a href="{{ siteUrl }}">add another one</a> (if you wish, or course!) 😊</p>
+{% endblock %}
