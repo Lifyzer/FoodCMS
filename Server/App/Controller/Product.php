@@ -21,7 +21,7 @@ class Product extends Base
 {
     private const ADD_PRODUCT_VIEW_FILE = 'product/add.twig';
     private const SUBMIT_PRODUCT_VIEW_FILE = 'product/submit.twig';
-    private const EMAIL_NEW_PRODUCT_VIEW_FILE = 'email/new-product-details.twig';
+    private const EMAIL_NEW_PRODUCT_VIEW_FILE = 'emails/new-product-details.twig';
     private const EMAIL_SUBJECT = 'New Product to be moderated';
     private const HTML_CONTENT_TYPE = 'text/html';
 
