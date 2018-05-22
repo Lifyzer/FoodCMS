@@ -165,7 +165,7 @@ class Product extends Base
     private function isFormCompleted(array $fields): bool
     {
         foreach ($fields as $name => $value) {
-            if (empty($name) || trim($value) === '') {
+            if (!isset($name) || trim($value) === '') {
                 return false;
             }
 
