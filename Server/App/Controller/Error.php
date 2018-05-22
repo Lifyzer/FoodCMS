@@ -32,6 +32,7 @@ class Error extends Base
         http_response_code(StatusCode::NOT_FOUND);
 
         $data = [
+            'siteUrl' => SITE_URL,
             'siteName' => SITE_NAME,
             'pageName' => self::NOT_FOUND_PAGE_NAME,
             'message' => self::NOT_FOUND_MESSAGE
@@ -45,6 +46,7 @@ class Error extends Base
         http_response_code(StatusCode::INTERNAL_SERVER_ERROR);
 
         $data = [
+            'siteUrl' => SITE_URL,
             'siteName' => SITE_NAME,
             'pageName' => self::INTERNAL_ERROR_PAGE_NAME,
             'message' => self::INTERNAL_ERROR_MESSAGE
