@@ -17,12 +17,12 @@ use Psr\Container\ContainerInterface;
 class Product
 {
     private const QUERY_ADD_PRODUCT_TO_PENDING = '
-      INSERT INTO pending_product (barcode_id, product_name, ingrediants, sugar, carbohydrate, saturated_fats, dietary_fiber, protein, salt, sodium, alcohol, product_image, is_organic, is_healthy)
+      INSERT INTO pending_product (barcode_id, product_name, ingredients, sugar, carbohydrate, saturated_fats, dietary_fiber, protein, salt, sodium, alcohol, product_image, is_organic, is_healthy)
       VALUES(:barcode, :name, :ingredients, :sugar, :carbohydrate, :saturatedfat, :fiber, :protein, :salt, :sodium, :alcohol, :image, :isorganic, :ishealthy)';
 
     private const QUERY_MOVE_PRODUCT_TO_LIVE = '
-      INSERT INTO product (barcode_id, product_name, ingrediants, sugar, carbohydrate, saturated_fats, dietary_fiber, protein, salt, sodium, alcohol, product_image, is_organic, is_healthy)
-      SELECT barcode_id, product_name, ingrediants, sugar, carbohydrate, saturated_fats, dietary_fiber, protein, salt, sodium, alcohol, product_image, is_organic, is_healthy FROM pending_product WHERE id = :productId LIMIT 1';
+      INSERT INTO product (barcode_id, product_name, ingredients, sugar, carbohydrate, saturated_fats, dietary_fiber, protein, salt, sodium, alcohol, product_image, is_organic, is_healthy)
+      SELECT barcode_id, product_name, ingredients, sugar, carbohydrate, saturated_fats, dietary_fiber, protein, salt, sodium, alcohol, product_image, is_organic, is_healthy FROM pending_product WHERE id = :productId LIMIT 1';
 
     private const QUERY_DELETE_PRODUCT_FROM_PENDING = 'DELETE FROM pending_product  WHERE id = :productId LIMIT 1';
 
