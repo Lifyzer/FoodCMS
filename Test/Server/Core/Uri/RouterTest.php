@@ -73,10 +73,10 @@ class RouterTest extends TestCase
 
         $this->assertRequestMethods();
 
-        Phake::verify($this->view)->display('not-found.twig', [
+        Phake::verify($this->view)->display('error.twig', [
             'siteName' => 'SITE_NAME',
             'pageName' => 'Page Not Found',
-            'messages' => 'The page doesn\'t exist'
+            'message' => 'The page doesn\'t exist'
         ]);
     }
 
