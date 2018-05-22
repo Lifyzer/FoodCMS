@@ -69,7 +69,7 @@ class Product extends Base
                 $data['productId'] = $this->productModel->addToPending($data);
                 $this->sendEmail($data);
             } else {
-                header('Location: /');
+                header('Location: ' . SITE_URL);
                 exit;
             }
         }
