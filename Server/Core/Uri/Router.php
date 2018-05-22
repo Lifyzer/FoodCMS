@@ -82,6 +82,13 @@ class Router
             $uri = substr($uri, 0, $pos);
         }
 
-        return '/' . rawurldecode($uri);
+        $uri = $this->addInitialSlashIfAbsent($uri);
+
+        return rawurldecode($uri);
+    }
+
+    private function addInitialSlashIfAbsent(string $uri): string
+    {
+        return substr($uri, 0, 1) !== '/' ? '/' . $uri : $uri;
     }
 }

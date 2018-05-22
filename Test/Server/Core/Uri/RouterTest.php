@@ -26,7 +26,7 @@ class RouterTest extends TestCase
 {
     private const HTTP_METHOD = 'get';
     private const ROOT_QUERY_STRING = '/';
-    private const INEXISTENT_QUERY_STRING = 'inexistent-page/';
+    private const INEXISTENT_QUERY_STRING = '/inexistent-page/';
 
     /** @var ContainerInterface|Phake_IMock */
     private $container;
@@ -69,7 +69,7 @@ class RouterTest extends TestCase
 
         $this->router->dispatch();
 
-        Phake::verify($this->dispatcher)->dispatch(self::HTTP_METHOD, '/' . self::INEXISTENT_QUERY_STRING);
+        Phake::verify($this->dispatcher)->dispatch(self::HTTP_METHOD, self::INEXISTENT_QUERY_STRING);
 
         $this->assertRequestMethods();
 
@@ -87,7 +87,7 @@ class RouterTest extends TestCase
 
         $this->router->dispatch();
 
-        Phake::verify($this->dispatcher)->dispatch(self::HTTP_METHOD, '/' . self::ROOT_QUERY_STRING);
+        Phake::verify($this->dispatcher)->dispatch(self::HTTP_METHOD, self::ROOT_QUERY_STRING);
 
         $this->assertRequestMethods();
 
