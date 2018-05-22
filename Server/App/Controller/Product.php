@@ -58,11 +58,11 @@ class Product extends Base
         if ($request->get('addproduct') && !$this->isSpamBot($request)) {
             $data = $request->all();
 
-            // Remove unused param since we don't bind it
-            unset($data['addproduct']);
+            // Remove unused params since we don't bind them
+            unset($data['addproduct'], $data['firstname']);
 
             if (empty($data['barcode'])) {
-                $data['barcode'] = '';
+                $data['barcode'] = '-';
             }
 
             if ($this->isFormCompleted($data)) {
