@@ -12,6 +12,7 @@ namespace Lifyzer\Server\App\Controller;
 
 use Lifyzer\Server\App\Model\Product as ProductModel;
 use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
+use PDOException;
 use Psr\Container\ContainerInterface;
 use Swift_Mailer;
 use Swift_Message;
@@ -31,12 +32,16 @@ class Product extends Base
     /** @var Swift_Mailer */
     private $mailer;
 
+    /** @var ContainerInterface */
+    private $container;
+
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
 
         $this->mailer = $container->get(SwiftMailer::class);
         $this->productModel = new ProductModel($container);
+        $this->container = $container;
     }
 
     public function add(): void
@@ -66,8 +71,13 @@ class Product extends Base
             }
 
             if ($this->isFormCompleted($data)) {
-                $data['productId'] = $this->productModel->addToPending($data);
-                $this->sendEmail($data);
+                try {
+                    $data['productId'] = $this->productModel->addToPending($data);
+                    $this->sendEmail($data);
+                } catch (PDOException $e) {
+                    (new Error($this->container))->internalError();
+                    exit;
+                }
             } else {
                 header('Location: ' . SITE_URL);
                 exit;
