@@ -15,7 +15,7 @@ use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
 use Psr\Container\ContainerInterface;
 use Swift_Mailer;
 use Swift_Message;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class Product extends Base
 {
@@ -151,13 +151,13 @@ class Product extends Base
     /**
      * Make sure that a human fulfilled the form (a bot would fulfil "firstname" field as well).
      *
-     * @param Request $request
+     * @param ParameterBag $request
      *
      * @return bool
      */
-    private function isSpamBot(Request $request): bool
+    private function isSpamBot(ParameterBag $request): bool
     {
-        return (bool)$request->request('firstname');
+        return (bool)$request->get('firstname');
     }
 
     private function isFormCompleted(array $fields): bool
