@@ -62,14 +62,14 @@ class RouterTest extends TestCase
         $this->router = new Router($this->dispatcher, $this->container);
     }
 
-    public function testDispatcherFound(): void
+    public function testDispatcherNotFoundPage(): void
     {
         Phake::when($this->request)->getMethod()->thenReturn(self::HTTP_METHOD);
         Phake::when($this->request)->getQueryString()->thenReturn(self::INEXISTENT_QUERY_STRING);
 
         $this->router->dispatch();
 
-        Phake::verify($this->dispatcher)->dispatch(self::HTTP_METHOD, self::INEXISTENT_QUERY_STRING);
+        Phake::verify($this->dispatcher)->dispatch(self::HTTP_METHOD, '/' . self::INEXISTENT_QUERY_STRING);
 
         $this->assertRequestMethods();
 
@@ -80,18 +80,18 @@ class RouterTest extends TestCase
         ]);
     }
 
-    public function testDispatcherNotFound(): void
+    public function testDispatcherFoundWithIndex(): void
     {
         Phake::when($this->request)->getMethod()->thenReturn(self::HTTP_METHOD);
         Phake::when($this->request)->getQueryString()->thenReturn(self::ROOT_QUERY_STRING);
 
         $this->router->dispatch();
 
-        Phake::verify($this->dispatcher)->dispatch(self::HTTP_METHOD, self::ROOT_QUERY_STRING);
+        Phake::verify($this->dispatcher)->dispatch(self::HTTP_METHOD, '/' . self::ROOT_QUERY_STRING);
 
         $this->assertRequestMethods();
 
-        //Phake::verify($this->view)->display('add.twig', []);
+        Phake::verify($this->view)->display(Phake::anyParameters());
     }
 
     private function assertRequestMethods(): void
