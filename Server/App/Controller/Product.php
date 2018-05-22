@@ -56,8 +56,10 @@ class Product extends Base
         $request = $this->httpRequest->request;
 
         if ($request->get('addproduct') && !$this->isSpamBot($request)) {
-
             $data = $request->all();
+
+            // Remove unused param since we don't bind it
+            unset($data['addproduct']);
 
             if (empty($data['barcode'])) {
                 $data['barcode'] = '';
