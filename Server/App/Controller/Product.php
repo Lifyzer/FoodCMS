@@ -11,9 +11,11 @@ declare(strict_types=1);
 namespace Lifyzer\Server\App\Controller;
 
 use Lifyzer\Server\App\Model\Product as ProductModel;
+use Lifyzer\Server\Core\Container\Provider\Monolog;
 use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
 use PDOException;
 use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
 use Swift_Mailer;
 use Swift_Message;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -74,7 +76,17 @@ class Product extends Base
                 try {
                     $data['productId'] = $this->productModel->addToPending($data);
                     $this->sendEmail($data);
-                } catch (PDOException $e) {
+                } catch (PDOException $except) {
+                    /** @var LoggerInterface $log */
+                    $log = $this->container->get(Monolog::class);
+                    $log->error(
+                        'PDO Exception',
+                        [
+                            'message' => $except->getMessage(),
+                            'trace' => $except->getTraceAsString()
+                        ]
+                    );
+
                     (new Error($this->container))->internalError();
                     exit;
                 }
