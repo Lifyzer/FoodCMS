@@ -18,6 +18,7 @@ use Lifyzer\Server\Core\Container\Provider\SwiftMailer as SwiftMailerContainer;
 use Lifyzer\Server\Core\Container\Provider\Twig as TwigContainer;
 use Lifyzer\Server\Core\Debug;
 use Lifyzer\Server\Core\Uri\Router;
+use Whoops\Handler\PrettyPageHandler;
 
 require __DIR__ . '/Server/vendor/autoload.php';
 
@@ -27,7 +28,7 @@ define('SITE_URL', getenv('SITE_URL'));
 Debug::initializeMode();
 
 $whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->pushHandler(new PrettyPageHandler);
 $whoops->register();
 
 $container = new Container();
