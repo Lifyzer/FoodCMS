@@ -26,7 +26,7 @@ class RouterTest extends TestCase
 {
     private const HTTP_METHOD = 'get';
     private const ROOT_QUERY_STRING = '/';
-    private const INEXISTENT_QUERY_STRING = 'inexistent-page/';
+    private const INEXISTENT_QUERY_STRING = '/inexistent-page/';
 
     /** @var ContainerInterface|Phake_IMock */
     private $container;
@@ -62,7 +62,7 @@ class RouterTest extends TestCase
         $this->router = new Router($this->dispatcher, $this->container);
     }
 
-    public function testDispatcherFound(): void
+    public function testDispatcherNotFoundPage(): void
     {
         Phake::when($this->request)->getMethod()->thenReturn(self::HTTP_METHOD);
         Phake::when($this->request)->getQueryString()->thenReturn(self::INEXISTENT_QUERY_STRING);
@@ -73,14 +73,14 @@ class RouterTest extends TestCase
 
         $this->assertRequestMethods();
 
-        Phake::verify($this->view)->display('not-found.twig', [
+        Phake::verify($this->view)->display('error.twig', [
             'siteName' => 'SITE_NAME',
             'pageName' => 'Page Not Found',
-            'messages' => 'The page doesn\'t exist'
+            'message' => 'The page doesn\'t exist'
         ]);
     }
 
-    public function testDispatcherNotFound(): void
+    public function testDispatcherFoundWithIndex(): void
     {
         Phake::when($this->request)->getMethod()->thenReturn(self::HTTP_METHOD);
         Phake::when($this->request)->getQueryString()->thenReturn(self::ROOT_QUERY_STRING);
@@ -91,7 +91,7 @@ class RouterTest extends TestCase
 
         $this->assertRequestMethods();
 
-        //Phake::verify($this->view)->display('add.twig', []);
+        Phake::verify($this->view)->display(Phake::anyParameters());
     }
 
     private function assertRequestMethods(): void

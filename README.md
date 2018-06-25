@@ -2,6 +2,8 @@
 
 Allows users to add new products and allows admins to moderate them easily.
 
+![Healthy Food, Healthy Tomato](static/img/healthy-tomato.svg)
+
 
 ## The Requirements
 

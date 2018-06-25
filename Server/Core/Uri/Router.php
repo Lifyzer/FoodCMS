@@ -82,13 +82,13 @@ class Router
             $uri = substr($uri, 0, $pos);
         }
 
-        $uri = $this->addTrailingSlashIfNeeded($uri);
+        $uri = $this->addInitialSlashIfAbsent($uri);
 
         return rawurldecode($uri);
     }
 
-    private function addTrailingSlashIfNeeded(string $uri): string
+    private function addInitialSlashIfAbsent(string $uri): string
     {
-        return substr($uri, -1) !== '/' ? $uri . '/' : $uri;
+        return substr($uri, 0, 1) !== '/' ? '/' . $uri : $uri;
     }
 }

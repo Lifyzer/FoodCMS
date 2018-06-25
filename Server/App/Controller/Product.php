@@ -11,17 +11,20 @@ declare(strict_types=1);
 namespace Lifyzer\Server\App\Controller;
 
 use Lifyzer\Server\App\Model\Product as ProductModel;
+use Lifyzer\Server\Core\Container\Provider\Monolog;
 use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
+use PDOException;
 use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
 use Swift_Mailer;
 use Swift_Message;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class Product extends Base
 {
     private const ADD_PRODUCT_VIEW_FILE = 'product/add.twig';
     private const SUBMIT_PRODUCT_VIEW_FILE = 'product/submit.twig';
-    private const EMAIL_NEW_PRODUCT_VIEW_FILE = 'email/new-product-details.twig';
+    private const EMAIL_NEW_PRODUCT_VIEW_FILE = 'emails/new-product-details.twig';
     private const EMAIL_SUBJECT = 'New Product to be moderated';
     private const HTML_CONTENT_TYPE = 'text/html';
 
@@ -31,12 +34,16 @@ class Product extends Base
     /** @var Swift_Mailer */
     private $mailer;
 
+    /** @var ContainerInterface */
+    private $container;
+
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
 
         $this->mailer = $container->get(SwiftMailer::class);
         $this->productModel = new ProductModel($container);
+        $this->container = $container;
     }
 
     public function add(): void
@@ -56,18 +63,35 @@ class Product extends Base
         $request = $this->httpRequest->request;
 
         if ($request->get('addproduct') && !$this->isSpamBot($request)) {
-
             $data = $request->all();
 
+            // Remove unused params since we don't bind them
+            unset($data['addproduct'], $data['firstname']);
+
             if (empty($data['barcode'])) {
-                $data['barcode'] = '';
+                $data['barcode'] = '-';
             }
 
             if ($this->isFormCompleted($data)) {
-                $data['productId'] = $this->productModel->addToPending($data);
-                $this->sendEmail($data);
+                try {
+                    $data['productId'] = $this->productModel->addToPending($data);
+                    $this->sendEmail($data);
+                } catch (PDOException $except) {
+                    /** @var LoggerInterface $log */
+                    $log = $this->container->get(Monolog::class);
+                    $log->error(
+                        'PDO Exception',
+                        [
+                            'message' => $except->getMessage(),
+                            'trace' => $except->getTraceAsString()
+                        ]
+                    );
+
+                    (new Error($this->container))->internalError();
+                    exit;
+                }
             } else {
-                header('Location: /');
+                header('Location: ' . SITE_URL);
                 exit;
             }
         }
@@ -151,19 +175,19 @@ class Product extends Base
     /**
      * Make sure that a human fulfilled the form (a bot would fulfil "firstname" field as well).
      *
-     * @param Request $request
+     * @param ParameterBag $request
      *
      * @return bool
      */
-    private function isSpamBot(Request $request): bool
+    private function isSpamBot(ParameterBag $request): bool
     {
-        return (bool)$request->request('firstname');
+        return (bool)$request->get('firstname');
     }
 
     private function isFormCompleted(array $fields): bool
     {
         foreach ($fields as $name => $value) {
-            if (empty($name) || trim($value) === '') {
+            if (!isset($name) || trim($value) === '') {
                 return false;
             }
 
