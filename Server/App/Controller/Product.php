@@ -112,7 +112,7 @@ class Product extends Base
         if ($this->isSecurityHashValid($data)) {
             $productId = (int)$data['id'];
             $this->productModel->moveToLive($productId);
-            echo 'Approved! :)';
+            echo 'Product approved! :)';
         } else {
             echo 'An error occurred...';
         }
