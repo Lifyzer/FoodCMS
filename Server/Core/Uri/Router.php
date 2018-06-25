@@ -62,7 +62,7 @@ class Router
                 try {
                     $reflector = new ReflectionMethod($controller, $method);
                     if ($reflector->isPublic()) {
-                        $reflector->invokeArgs(new $controller($this->container), $arguments);
+                        $reflector->invokeArgs(new $controller($this->container), [$arguments]);
                     }
                 } catch (ReflectionException $except) {
                     /** @var LoggerInterface $log */
