@@ -14,7 +14,7 @@ Allows users to add new products and allows admins to moderate them easily.
 ## Who Am I..? The Author!
 
 [Pierre-Henry Soria](http://pierrehenry.be), a cool, passionate Belgian engineer :belgium: :smiley:
-*(happy & in good health thanks **[Lifyzer App](https://play.google.com/store/apps/details?id=com.foodscan)**!)*
+*(happy & in good health thanks **[Lifyzer App](https://play.google.com/store/apps/details?id=com.lifyzer)**!)*
 
 You can always contact me at *hi {{AT}} ph7 [[D0T]] me*!
 
