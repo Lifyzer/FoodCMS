@@ -24,12 +24,12 @@
     "vlucas/phpdotenv": "^2.4",
     "shrikeh/teapot": "^2.3",
     "monolog/monolog": "^1.23",
-    "filp/whoops": "2.*",
     "psr/log": "^1.0",
     "psr/container": "^1.0",
     "symfony/http-foundation": "^4.0"
   },
   "require-dev": {
+    "filp/whoops": "2.*",
     "phpunit/phpunit": "^6.5",
     "phake/phake": "^3.0"
   },

@@ -7,9 +7,9 @@ function save-project-to-repo() {
 }
 
 gitRemotes=(
-    git@github.com:Lifyzer/Lifyzer-WebApp-CMS.git
     git@bitbucket.org:pH_7/lifyzer-webapp-cms.git
     git@gitlab.com:pH-7/lifyzer-webapp-cms.git
+    git@github.com:Lifyzer/Lifyzer-WebApp-CMS.git
 )
 for remote in "${gitRemotes[@]}"
 do

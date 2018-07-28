@@ -111,10 +111,10 @@ class Product extends Base
     {
         if ($this->isSecurityHashValid($data)) {
             $productId = (int)$data['id'];
-            $this->productModel->moveToLive($productId);
-            echo 'Approved! :)';
+            $result = $this->productModel->moveToLive($productId);
+            echo $result ? 'Product approved! :)' : 'An error occurred...';
         } else {
-            echo 'An error occurred...';
+            echo 'Invalid security hash!';
         }
     }
 
@@ -122,10 +122,10 @@ class Product extends Base
     {
         if ($this->isSecurityHashValid($data)) {
             $productId = (int)$data['id'];
-            $this->productModel->discard($productId);
-            echo 'Product discard! :(';
+            $result = $this->productModel->discard($productId);
+            echo $result ? 'Product discard! :(' : 'An error occurred...';
         } else {
-            echo 'An error occurred...';
+            echo 'Invalid security hash!';
         }
     }
 
