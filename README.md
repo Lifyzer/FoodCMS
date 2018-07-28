@@ -7,7 +7,7 @@ Allows users to add new products and allows admins to moderate them easily.
 
 ## The Requirements
 
-* [PHP 7.1](http://php.net/releases/7_2_0.php) or higher
+* [PHP 7.1](http://php.net/releases/7_1_0.php) or higher
 * [Composer](https://getcomposer.org)
 
 
