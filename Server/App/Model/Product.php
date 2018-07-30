@@ -16,6 +16,10 @@ use Psr\Container\ContainerInterface;
 
 class Product
 {
+    private const QUERY_PRODUCT_NAME_EXISTS = 'SELECT COUNT(product_name) FROM product WHERE product_name = :product_name LIMIT 1';
+
+    private const QUERY_BARCODE_EXISTS = 'SELECT COUNT(barcode_id) FROM product WHERE barcode_id = :barcode LIMIT 1';
+
     private const QUERY_ADD_PRODUCT_TO_PENDING = '
       INSERT INTO pending_product (barcode_id, product_name, ingredients, sugar, carbohydrate, saturated_fats, dietary_fiber, protein, salt, sodium, alcohol, product_image, is_organic, is_healthy)
       VALUES(:barcode, :name, :ingredients, :sugar, :carbohydrate, :saturatedfat, :fiber, :protein, :salt, :sodium, :alcohol, :image, :isorganic, :ishealthy)';
@@ -32,6 +36,24 @@ class Product
     public function __construct(ContainerInterface $container)
     {
         $this->db = $container->get(Database::class);
+    }
+
+    public function doesProductNameExist(string $productName): bool
+    {
+        $stmt = $this->db->prepare(self::QUERY_PRODUCT_NAME_EXISTS);
+        $stmt->bindValue('product_name', $productName, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchColumn() == 1;
+    }
+
+    public function doesBarcodeExist(string $barcode): bool
+    {
+        $stmt = $this->db->prepare(self::QUERY_BARCODE_EXISTS);
+        $stmt->bindValue('barcode', $barcode, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchColumn() == 1;
     }
 
     /**
