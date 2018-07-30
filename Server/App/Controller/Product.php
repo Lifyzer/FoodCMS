@@ -74,8 +74,26 @@ class Product extends Base
 
             if ($this->isFormCompleted($data)) {
                 try {
-                    $data['productId'] = $this->productModel->addToPending($data);
-                    $this->sendEmail($data);
+                    if (
+                        $this->productModel->doesBarcodeExist($data['barcode']) &&
+                        $this->productModel->doesProductNameExist($data['name'])
+                    ) {
+                        $data['productId'] = $this->productModel->addToPending($data);
+                        $this->sendEmail($data);
+                        $message = 'Product successfully submitted. It will be reviewed shortly';
+                    } else {
+                        $message = 'Oops! This product has already been added to the database.';
+                    }
+
+                    $this->view->display(
+                        self::SUBMIT_PRODUCT_VIEW_FILE,
+                        [
+                            'siteUrl' => SITE_URL,
+                            'siteName' => SITE_NAME,
+                            'pageName' => 'Add a Product',
+                            'message' => $message
+                        ]
+                    );
                 } catch (PDOException $except) {
                     /** @var LoggerInterface $log */
                     $log = $this->container->get(Monolog::class);
@@ -91,20 +109,11 @@ class Product extends Base
                     exit;
                 }
             } else {
-                header('Location: ' . SITE_URL);
-                exit;
+                $this->redirectToHomepage();
             }
+        } else {
+            $this->redirectToHomepage();
         }
-
-        $this->view->display(
-            self::SUBMIT_PRODUCT_VIEW_FILE,
-            [
-                'siteUrl' => SITE_URL,
-                'siteName' => SITE_NAME,
-                'pageName' => 'Add a Product',
-                'message' => 'Product successfully submitted'
-            ]
-        );
     }
 
     public function approve(array $data): void
@@ -198,5 +207,11 @@ class Product extends Base
     private function isSecurityHashValid(array $data): bool
     {
         return $data['hash'] === getenv('SECURITY_HASH');
+    }
+
+    private function redirectToHomepage(): void
+    {
+        header('Location: ' . SITE_URL);
+        exit;
     }
 }
