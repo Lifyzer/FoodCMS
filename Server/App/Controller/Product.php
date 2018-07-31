@@ -75,8 +75,8 @@ class Product extends Base
             if ($this->isFormCompleted($data)) {
                 try {
                     if (
-                        $this->productModel->doesBarcodeExist($data['barcode']) &&
-                        $this->productModel->doesProductNameExist($data['name'])
+                        !$this->productModel->doesBarcodeExist($data['barcode']) &&
+                        !$this->productModel->doesProductNameExist($data['name'])
                     ) {
                         $data['productId'] = $this->productModel->addToPending($data);
                         $this->sendEmail($data);
