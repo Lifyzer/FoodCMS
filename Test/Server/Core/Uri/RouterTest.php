@@ -74,10 +74,10 @@ class RouterTest extends TestCase
         $this->assertRequestMethods();
 
         Phake::verify($this->view)->display('error.twig', [
-            'siteName' => 'SITE_NAME',
+            'siteName' => 'Lifyzer App',
             'pageName' => 'Page Not Found',
             'message' => 'The page doesn\'t exist',
-            'siteUrl' => 'SITE_URL'
+            'siteUrl' => 'https://lifyzer.com/app/'
         ]);
     }
 
