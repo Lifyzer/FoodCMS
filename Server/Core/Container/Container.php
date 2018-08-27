@@ -17,7 +17,7 @@ use Psr\Container\ContainerInterface;
 
 class Container implements ContainerInterface
 {
-    /** @var Providable */
+    /** @var Providable[] */
     private $provider = [];
 
     public function register(string $providerName, Providable $provider): void
