@@ -16,7 +16,7 @@ use Psr\Log\LoggerInterface;
 
 class Monolog implements Providable
 {
-    private const LOG_PATH = '/log/';
+    private const LOG_DIR = '/log/';
     private const LOG_EXT = '.log';
 
     /** @var string */
@@ -34,11 +34,13 @@ class Monolog implements Providable
      */
     public function getService(): LoggerInterface
     {
-        $log = new Logger($this->name);
+        $rootPath = dirname(__DIR__, 3);
         $streamHandler = new StreamHandler(
-            dirname(__DIR__, 3) . self::LOG_PATH . $this->name . self::LOG_EXT,
+            $rootPath . self::LOG_DIR . $this->name . self::LOG_EXT,
             Logger::DEBUG
         );
+
+        $log = new Logger($this->name);
         $log->pushHandler($streamHandler);
 
         return $log;
