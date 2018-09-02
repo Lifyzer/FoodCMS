@@ -21,6 +21,17 @@ class Database implements Providable
 
     public function getService(): PDO
     {
+        static $instance;
+
+        if ($instance === null) {
+            $instance = $this->createPdoInstance();
+        }
+
+        return $instance;
+    }
+
+    private function createPdoInstance(): PDO
+    {
         $details = $this->getDetails();
 
         $driverOptions[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES {$details['charset']}";
