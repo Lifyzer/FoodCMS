@@ -14,10 +14,12 @@ use RuntimeException;
 
 class ContainerNotFound extends RuntimeException implements NotFoundExceptionInterface
 {
+    private const ERROR_MESSAGE = 'No entry was found for %s identifier.';
+
     public function __construct(string $id)
     {
         parent::__construct(
-            sprintf('No entry was found for %s identifier.', $id)
+            sprintf(self::ERROR_MESSAGE, $id)
         );
     }
 }
