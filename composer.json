@@ -26,10 +26,10 @@
     "monolog/monolog": "^1.23",
     "psr/log": "^1.0",
     "psr/container": "^1.0",
-    "symfony/http-foundation": "^4.0"
+    "symfony/http-foundation": "^4.0",
+    "filp/whoops": "2.*"
   },
   "require-dev": {
-    "filp/whoops": "2.*",
     "phpunit/phpunit": "^6.5",
     "phake/phake": "^3.0"
   },
