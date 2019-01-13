@@ -16,6 +16,7 @@ use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
 use PDOException;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
+use stdClass;
 use Swift_Mailer;
 use Swift_Message;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -59,13 +60,13 @@ class Product extends Base
     {
         $productData = $this->productModel->get($productId);
 
-        if (!empty($productData)) {
+        if (!empty($productData) && $productData instanceof stdClass) {
             $this->view->display(
                 self::SHOW_PRODUCT_VIEW_FILE,
                 [
                     'siteUrl' => SITE_URL,
                     'siteName' => SITE_NAME,
-                    'pageName' => 'Add a Product',
+                    'pageName' => $productData->product_name,
                     'item' => $productData
                 ]
             );
