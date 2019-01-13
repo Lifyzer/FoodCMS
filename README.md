@@ -1,22 +1,17 @@
-# 🍏 Lifyzer WebApp CMS 🍓
+# FoodCMS 😋 (from the maker of Lifyzer™)
 
-Allows users to add new products and allows admins to moderate them easily.
+A real "Food CMS" and a "Food Search Engine" 💪 to make foodstuffs much more transparent than it actually is now! 🙂
 
-![Healthy Food, Healthy Tomato](static/img/healthy-tomato.svg)
-
-
-## The Requirements
-
-* [PHP 7.1](http://php.net/releases/7_1_0.php) or higher
+* [PHP 7.2](http://php.net/releases/7_2_0.php) or newer
 * [Composer](https://getcomposer.org)
 
 
-## Who Am I..? The Author!
+## The Creator! 😄
 
-[Pierre-Henry Soria](http://pierrehenry.be), a cool, passionate Belgian engineer :belgium: :smiley:
-*(happy & in good health thanks **[Lifyzer App](https://play.google.com/store/apps/details?id=com.lifyzer)**!)*
+I'm [Pierre-Henry Soria](http://ph7.me), a cool, passionate Software Engineer :smiley:
+*(happy & in excellent health thanks the **[Lifyzer App](https://play.google.com/store/apps/details?id=com.lifyzer)**!)*
 
-You can always contact me at *hi {{AT}} ph7 [[D0T]] me*!
+You can always reach me at *hi [[AT]] ph7 [[D0T]] me*!
 
 
 ## Project URL
@@ -24,7 +19,7 @@ You can always contact me at *hi {{AT}} ph7 [[D0T]] me*!
 [Lifyzer.com](https://lifyzer.com)
 
 
-## Setting Up
+## Setting It Up
 
 1. Run `composer install` to install the project's dependencies.
 2. In `~/Server/config/`, rename `.env.example` to `.env` and edit the details and set a secure SECURITY_HASH in there.
