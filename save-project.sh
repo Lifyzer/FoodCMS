@@ -6,10 +6,10 @@ function save-project-to-repo() {
     git push
 }
 
-gitRemotes=(
-    git@bitbucket.org:pH_7/lifyzer-webapp-cms.git
-    git@gitlab.com:pH-7/lifyzer-webapp-cms.git
-    git@github.com:Lifyzer/Lifyzer-WebApp-CMS.git
+declare readonly gitRemotes=(
+    git@bitbucket.org:pH_7/food-cms.git
+    git@gitlab.com:pH-7/food-cms.git
+    git@github.com:Lifyzer/Food-CMS.git
 )
 for remote in "${gitRemotes[@]}"
 do
