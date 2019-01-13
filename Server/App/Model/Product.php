@@ -18,6 +18,7 @@ use stdClass;
 class Product
 {
     private const QUERY_GET_PRODUCT = 'SELECT * FROM product WHERE id = :productId LIMIT 1';
+    private const QUERY_SEARCH_PRODUCT = 'SELECT * FROM product WHERE product_name LIKE :keywords';
 
     /** @var PDO */
     private $db;
@@ -30,9 +31,18 @@ class Product
     public function get(int $productId): stdClass
     {
         $stmt = $this->db->prepare(self::QUERY_GET_PRODUCT);
-        $stmt->bindValue('productId', $productId, PDO::PARAM_STR);
+        $stmt->bindValue('productId', $productId, PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchObject();
+    }
+
+    public function search(string $keywords): array
+    {
+        $stmt = $this->db->prepare(self::QUERY_SEARCH_PRODUCT);
+        $stmt->bindValue('keywords', '%' . $keywords . '%', PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }
