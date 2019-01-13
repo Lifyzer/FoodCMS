@@ -1,9 +1,9 @@
-# FoodCMS 😋 (from the maker of Lifyzer™)
+# FoodCMS™ 😋 (from the maker of Lifyzer™)
 
-A real "Food CMS" and a "Food Search Engine" 💪 to make foodstuffs much more transparent than it actually is now! 🙂
+A real "Food CMS" solution and a "Food Search Engine" 💪 to make foodstuffs much more transparent than it has never been before! 🙂
 
-* [PHP 7.2](http://php.net/releases/7_2_0.php) or newer
-* [Composer](https://getcomposer.org)
+* 🐘 [PHP 7.2](http://php.net/releases/7_2_0.php) or newer
+* 🎻 [Composer](https://getcomposer.org)
 
 
 ## The Creator! 😄
