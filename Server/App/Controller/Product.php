@@ -25,6 +25,7 @@ class Product extends Base
 {
     private const INDEX_PRODUCT_VIEW_FILE = 'product/homepage.twig';
     private const SHOW_PRODUCT_VIEW_FILE = 'product/show.twig';
+    private const SEARCH_PRODUCT_VIEW_FILE = 'product/search.twig';
 
     /** @var ProductModel */
     private $productModel;
@@ -51,7 +52,7 @@ class Product extends Base
             [
                 'siteUrl' => SITE_URL,
                 'siteName' => SITE_NAME,
-                'pageName' => 'Add a Product'
+                'pageName' => 'Search any foodstuffs. Eat Better!'
             ]
         );
     }
@@ -75,23 +76,16 @@ class Product extends Base
         }
     }
 
-    public function show(int $productId): void
+    public function search(): void
     {
-        $productData = $this->productModel->get($productId);
-
-        if (!empty($productData)) {
-            $this->view->display(
-                self::SHOW_PRODUCT_VIEW_FILE,
-                [
-                    'siteUrl' => SITE_URL,
-                    'siteName' => SITE_NAME,
-                    'pageName' => 'Add a Product',
-                    'item' => $productData
-                ]
-            );
-        } else {
-            $this->redirectToHomepage();
-        }
+        $this->view->display(
+            self::SEARCH_PRODUCT_VIEW_FILE,
+            [
+                'siteUrl' => SITE_URL,
+                'siteName' => SITE_NAME,
+                'pageName' => 'Search a product',
+            ]
+        );
     }
 
     private function redirectToHomepage(): void
