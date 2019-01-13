@@ -11,8 +11,7 @@ use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 
 return simpleDispatcher(function (RouteCollector $route) {
-    $route->addRoute('GET', '/', 'Product@add');
-    $route->addRoute('POST', '/submit', 'Product@submit');
-    $route->addRoute('GET', '/approve/{hash}/{id:\d+}', 'Product@approve');
-    $route->addRoute('GET', '/disapprove/{hash}/{id:\d+}', 'Product@disapprove');
+    $route->addRoute('GET', '/', 'Product@homepage');
+    $route->addRoute('GET', '/search', 'Product@search');
+    $route->addRoute('GET', '/product/{id:\d+}', 'Product@show');
 });
