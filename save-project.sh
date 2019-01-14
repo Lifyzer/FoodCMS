@@ -9,7 +9,7 @@ function save-project-to-repo() {
 declare readonly gitRemotes=(
     git@bitbucket.org:pH_7/food-cms.git
     git@gitlab.com:pH-7/food-cms.git
-    git@github.com:Lifyzer/Food-CMS.git
+    git@github.com:Lifyzer/FoodCMS.git
 )
 for remote in "${gitRemotes[@]}"
 do
