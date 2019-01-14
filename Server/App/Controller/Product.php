@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 
 class Product extends Base
 {
-    private const INDEX_PRODUCT_VIEW_FILE = 'product/homepage.twig';
+    private const INDEX_PRODUCT_VIEW_FILE = 'homepage.twig';
     private const SHOW_PRODUCT_VIEW_FILE = 'product/show.twig';
     private const SEARCH_PRODUCT_VIEW_FILE = 'product/search.twig';
     private const RESULTS_PRODUCT_VIEW_FILE = 'product/results.twig';
