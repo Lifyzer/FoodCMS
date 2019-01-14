@@ -12,6 +12,7 @@ namespace Lifyzer\Server\App\Controller;
 use Lifyzer\Server\Core\Container\Provider\HttpRequest;
 use Lifyzer\Server\Core\Container\Provider\Monolog;
 use Lifyzer\Server\Core\Container\Provider\Twig;
+use Lifyzer\Server\Core\Twig\Extension\Url as TwigUrlExtension;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Twig_Environment;
@@ -30,6 +31,7 @@ abstract class Base
     public function __construct(ContainerInterface $container)
     {
         $this->view = $container->get(Twig::class);
+        $this->view->addExtension(new TwigUrlExtension());
         $this->log = $container->get(Monolog::class);
         $this->httpRequest = $container->get(HttpRequest::class);
     }

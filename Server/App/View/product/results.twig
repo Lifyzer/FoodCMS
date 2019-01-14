@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="row">
+        {% for item in items%}
+        <h1>
+            <a href="{{  }}">
+                {{ item.product_name }}</a></h1>
+        <p>{{ item.ingredients }}</p>
+    </div>
+{% endblock %}

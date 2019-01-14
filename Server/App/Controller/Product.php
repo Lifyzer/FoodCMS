@@ -26,6 +26,7 @@ class Product extends Base
     private const INDEX_PRODUCT_VIEW_FILE = 'product/homepage.twig';
     private const SHOW_PRODUCT_VIEW_FILE = 'product/show.twig';
     private const SEARCH_PRODUCT_VIEW_FILE = 'product/search.twig';
+    private const RESULTS_PRODUCT_VIEW_FILE = 'product/results.twig';
 
     /** @var ProductModel */
     private $productModel;
@@ -86,6 +87,27 @@ class Product extends Base
                 'pageName' => 'Search a product',
             ]
         );
+    }
+
+    public function result(): void
+    {
+        $keywords = $this->httpRequest->request->get('keywords');
+
+        if ($keywords) {
+            $items = $this->productModel->search($keywords);
+
+            $this->view->display(
+                self::RESULTS_PRODUCT_VIEW_FILE,
+                [
+                    'siteUrl' => SITE_URL,
+                    'siteName' => SITE_NAME,
+                    'pageName' => 'Foodstuffs Results',
+                    'items' => $items
+                ]
+            );
+        } else {
+            $this->redirectToHomepage();
+        }
     }
 
     private function redirectToHomepage(): void
