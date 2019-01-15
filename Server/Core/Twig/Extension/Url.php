@@ -20,7 +20,7 @@ class Url extends Twig_Extension
         return [
             new Twig_SimpleFunction(
                 $this->getName(),
-                [$this, 'url']
+                [$this, 'getUrl']
             ),
         ];
     }

@@ -3,11 +3,14 @@
 {% block content %}
     <div class="row">
         {% for item in items%}
-        <h1>
-            <a href="{{ url('product' ~ item.id) }}">
-                {{ item.product_name }}
-            </a>
-        </h1>
-        <p>{{ item.ingredients }}</p>
+            <h1>
+                <a href="{{ url('product' ~ item.id) }}">
+                    {{ item.product_name }}
+                </a>
+            </h1>
+            <p>{{ item.ingredients }}</p>
+
+            <hr />
+        {% endfor %}
     </div>
 {% endblock %}
