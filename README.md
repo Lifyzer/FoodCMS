@@ -22,5 +22,5 @@ You can always reach me at *hi [[AT]] ph7 [[D0T]] me*!
 ## Setting It Up
 
 1. Run `composer install` to install the project's dependencies.
-2. In `~/Server/config/`, rename `.env.example` to `.env` and edit the details and set a secure SECURITY_HASH in there.
+2. In `~/Server/config/`, rename `.env.example` to `.env` and edit the details in there.
 3. Start a local development server `php -S 127.0.0.1:8080`
