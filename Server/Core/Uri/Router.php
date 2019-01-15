@@ -78,6 +78,8 @@ class Router
 
     private function uriCleanup(string $uri): string
     {
+        $uri = str_replace('=', '', $uri);
+
         if (false !== $pos = strpos($uri, '?')) {
             $uri = substr($uri, 0, $pos);
         }
