@@ -14,5 +14,6 @@ return simpleDispatcher(function (RouteCollector $route) {
     $route->addRoute('GET', '/', 'Product@homepage');
     $route->addRoute('GET', '/search', 'Product@search');
     $route->addRoute('GET', '/results', 'Product@result');
+    $route->addRoute('GET', '/about', 'About@about');
     $route->addRoute('GET', '/product/{id:\d+}', 'Product@show');
 });
