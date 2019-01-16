@@ -48,14 +48,7 @@ class Product extends Base
 
     public function homepage(): void
     {
-        $this->view->display(
-            self::INDEX_PRODUCT_VIEW_FILE,
-            [
-                'siteUrl' => SITE_URL,
-                'siteName' => SITE_NAME,
-                'pageName' => 'Search any foodstuffs. Eat Better!'
-            ]
-        );
+        $this->view->display(self::INDEX_PRODUCT_VIEW_FILE);
     }
 
     public function show(int $productId): void
