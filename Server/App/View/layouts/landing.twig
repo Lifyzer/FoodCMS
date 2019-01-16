@@ -11,18 +11,11 @@
 <body>
 <nav class="navbar has-shadow">
     <div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="../"><img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox"/></a>
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../">
+                <img src="{{ url('static/img/logo.png') }}" alt="Lifyzer App" />
+            </a>
             <div class="navbar-burger burger" data-target="navMenu"><span></span><span></span><span></span></div>
-        </div>
-        <div class="navbar-menu" id="navMenu">
-            <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link">Account</a>
-                    <div class="navbar-dropdown"><a class="navbar-item">Dashboard</a><a class="navbar-item">Profile</a><a class="navbar-item">Settings</a>
-                        <hr class="navbar-divider" />
-                        <div class="navbar-item">Logout</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </nav>
@@ -247,15 +240,26 @@
         <div class="columns is-mobile is-centered">
             <div class="field is-grouped is-grouped-multiline">
                 <div class="control">
-                    <div class="tags has-addons"><a class="tag is-link" href="https://github.com/dansup/bulma-templates">Bulma Templates</a><span class="tag is-light">Daniel Supernault</span></div>
+                    <div class="tags has-addons">
+                        <span class="tag is-light">FoodCMS™</span>
+                        Made with Care &amp; Love by <a class="tag is-link" href="http://pierrehenry.be">Pierre-Henry™</a>
+                    </div>
                 </div>
                 <div class="control">
-                    <div class="tags has-addons"><a class="tag is-link">The source code is licensed</a><span class="tag is-light">MIT  <i class="fa fa-github"></i></span></div>
+                    <div class="tags has-addons">
+                        <a class="tag is-link">
+                            Be Great Again. 🚀 Eat Healthy Food! 💪
+                        </a>
+                        <span class="tag is-light">
+                            <a href="https://github.com/Lifyzer/FoodCMS">
+                                <i class="fa fa-github"></i>
+                            </a>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-<script src="../js/bulma.js"></script>
 </body>
 </html>
