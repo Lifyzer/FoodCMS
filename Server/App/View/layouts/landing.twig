@@ -12,21 +12,23 @@
 <nav class="navbar has-shadow">
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item" href="../">
+            <a class="navbar-item" href="{{ url() }}">
                 <img src="{{ url('static/img/logo.png') }}" alt="Lifyzer App" />
             </a>
             <div class="navbar-burger burger" data-target="navMenu"><span></span><span></span><span></span></div>
         </div>
+        {% block slogan %}
+        {% endblock %}
     </div>
 </nav>
 <section class="hero is-info">
     <div class="hero-body">
         <div class="container">
+            {% block heading %}
+            {% endblock %}
+
             <div class="card">
                 <div class="card-content">
-                    {% block heading %}
-                    {% endblock %}
-
                     <div class="content">
                         <div class="control has-icons-left has-icons-right">
                             {%  include 'partials/search-form.twig' %}

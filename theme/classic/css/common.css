@@ -8,6 +8,11 @@
     margin-bottom: 50px;
 }
 
+.slogan {
+    font-weight: bold;
+    line-height: 50px;
+}
+
 .italic {
     font-style: italic;
 }
