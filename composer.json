@@ -1,13 +1,13 @@
 {
-  "name": "lifyzer/app",
-  "description": "Lifyzer App. The CMS to add/manage easily the food products.",
+  "name": "lifyzer/foodcms",
+  "description": "FoodCMS App. The CMS to show and search any foodstuffs.",
   "type": "project",
-  "homepage": "https://lifyzer.com/app/",
+  "homepage": "https://lifyzer.com",
   "authors": [
     {
       "name": "Pierre-Henry Soria",
       "email": "hi@ph7.me",
-      "homepage": "http://pierrehenry.be"
+      "homepage": "http://ph7.me"
     }
   ],
   "config": {
@@ -17,7 +17,7 @@
     "autoloader-suffix": "Lifyzer"
   },
   "require": {
-    "php": ">=7.1.0",
+    "php": ">=7.2.0",
     "nikic/fast-route": "^1.3",
     "twig/twig": "^2.4",
     "swiftmailer/swiftmailer": "^6.0",
