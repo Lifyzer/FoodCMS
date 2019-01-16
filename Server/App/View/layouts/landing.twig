@@ -29,13 +29,7 @@
 
                     <div class="content">
                         <div class="control has-icons-left has-icons-right">
-                            <form action="{{ url('results') }}" method="get">
-                                <input class="input is-large" type="search" />
-                                <span class="icon is-medium is-left">
-                                    <i class="fa fa-search"></i>
-                                </span>
-                                <input type="submit" name="submit" value="Look" />
-                            </form>
+                            {%  include 'partials/search-form.twig' %}
                             <span class="icon is-medium is-right">
                             <i class="fa fa-empire"></i>
                         </span>
