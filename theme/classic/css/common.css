@@ -34,6 +34,20 @@
     border-radius: 5px;
 }
 
+img {
+    opacity: 1;
+    transition: opacity .40s ease-in-out;
+    -webkit-transition: opacity .40s ease-in-out;
+    -moz-transition: opacity .40s ease-in-out;
+    -o-transition: opacity .40s ease-in-out;
+    -ms-transition: opacity .40s ease-in-out;
+    -khtml-transition: opacity .40s ease-in-out;
+}
+
+img:hover {
+    opacity: 0.5;
+}
+
 .strike {
     text-decoration: line-through;
 }
