@@ -29,6 +29,11 @@
     text-decoration: underline;
 }
 
+.border {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 .strike {
     text-decoration: line-through;
 }
