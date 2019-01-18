@@ -16,7 +16,7 @@ You can always reach me at *hi [[AT]] ph7 [[D0T]] me*!
 
 ## Project URL
 
-[Lifyzer.com](https://lifyzer.com)
+🍇 [Lifyzer️](https://lifyzer.com) 🥥
 
 
 ## Setting It Up
