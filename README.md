@@ -6,7 +6,7 @@ A real "Food CMS" solution and a "Food Search Engine" 💪 to make foodstuffs mu
 * 🎻 [Composer](https://getcomposer.org)
 
 
-## The Creator! 😄
+## The Creator! 💡
 
 I'm [Pierre-Henry Soria](http://ph7.me), a cool, passionate Software Engineer :smiley:
 *(happy & in excellent health thanks the **[Lifyzer App](https://play.google.com/store/apps/details?id=com.lifyzer)**!)*
@@ -14,12 +14,12 @@ I'm [Pierre-Henry Soria](http://ph7.me), a cool, passionate Software Engineer :s
 You can always reach me at *hi [[AT]] ph7 [[D0T]] me*!
 
 
-## Project URL
+## Project Website 🚀
 
 🍇 [Lifyzer️](https://lifyzer.com) 🥥
 
 
-## Setting It Up
+## Setting It Up ⚙️
 
 1. Run `composer install` to install the project's dependencies.
 2. In `~/Server/config/`, rename `.env.example` to `.env` and edit the details in there.
