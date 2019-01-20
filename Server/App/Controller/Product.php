@@ -84,7 +84,7 @@ class Product extends Base
 
     public function result(): void
     {
-        $keywords = $this->httpRequest->request->get('keywords');
+        $keywords = $this->httpRequest->query->get('keywords');
 
         if ($keywords) {
             $items = $this->productModel->search($keywords);
