@@ -8,10 +8,10 @@ A real "Food CMS" solution and a "Food Search Engine" 💪 to make foodstuffs mu
 
 ## The Creator! 💡
 
-I'm [Pierre-Henry Soria](http://ph7.me), a cool, passionate Software Engineer :smiley:
-*(happy & in excellent health thanks the **[Lifyzer App](https://play.google.com/store/apps/details?id=com.lifyzer)**!)*
+I'm [Pierre-Henry Soria](http://ph7.me), a cool, passionate and enthusiasm Software Engineer :smiley:
+*(Happy 🤗, and in Excellent Health 🧡 thanks the **[Lifyzer App](https://play.google.com/store/apps/details?id=com.lifyzer)**!)*
 
-You can always reach me at *hi [[AT]] ph7 [[D0T]] me*!
+You can always reach me at *hi [[AT]] ph7 [[D0T]] me*! I will be pleased to talk with you! 😊
 
 
 ## Project Website 🚀
