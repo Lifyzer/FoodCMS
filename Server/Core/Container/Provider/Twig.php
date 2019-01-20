@@ -22,11 +22,20 @@ class Twig implements Providable
         $rootPath = dirname(__DIR__, 3);
 
         $loader = new Twig_Loader_Filesystem($rootPath . self::VIEW_FOLDER);
+
+        return new Twig_Environment(
+            $loader,
+            $this->getOptions($rootPath)
+        );
+    }
+
+    private function getOptions(string $rootPath): array
+    {
         $cacheStatus = filter_var(getenv('CACHE'), FILTER_VALIDATE_BOOLEAN);
 
-        return new Twig_Environment($loader, [
+        return [
             'cache' => $cacheStatus ? $rootPath . self::CACHE_FOLDER : false,
             'debug' => DEBUG_MODE
-        ]);
+        ];
     }
 }
