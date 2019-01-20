@@ -99,7 +99,12 @@ class Product extends Base
                 ]
             );
         } else {
-            $this->redirectToHomepage();
+            $this->view->display(
+                self::INDEX_PRODUCT_VIEW_FILE,
+                [
+                    'error_msg' => 'Item not found'
+                ]
+            );
         }
     }
 
