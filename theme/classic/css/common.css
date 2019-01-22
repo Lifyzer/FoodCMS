@@ -48,6 +48,10 @@ img:hover {
     opacity: 0.5;
 }
 
+.border-radius {
+    border-radius: 5px;
+}
+
 .strike {
     text-decoration: line-through;
 }
