@@ -1,16 +1,32 @@
 {% extends "layouts/base.twig" %}
 
 {% block content %}
-    <h1>About The Wonderful Healthy Lifyzer's Mission!</h1>
-    <h3 class="underline">Because Good Healthy Food Matters much more than Everything Else!</h3>
+    <div class="row">
+        <div class="col s8">
+            <h1>About The Wonderful Healthy Lifyzer's Mission!</h1>
+            <h3 class="underline">Because Good Healthy Food Matters much more than Everything Else!</h3>
 
-    <p>
-        ...
-    </p>
+            <p>
+                ...
+            </p>
 
-    <p>
-        <a class="orange-text text-lighten-3" rel="nofollow" href="mailto:hello@lifyzer.com">
-            😊 Contact Me 😊
-        </a>
-    </p>
+            <p>
+                <a class="orange-text text-lighten-3" rel="nofollow" href="mailto:hello@lifyzer.com">
+                    😊 Contact Me 😊
+                </a>
+            </p>
+        </div>
+
+        <div class="col s4">
+            <p>
+                <img
+                    src="{{ url('static/img/phs.png') }}"
+                    alt="About the author - Pierre-Henry Soria"
+                    class="border-radius"
+                />
+            </p>
+        </div>
+    </div>
+
+    {%  include 'partials/disqus.twig' %}
 {% endblock %}
