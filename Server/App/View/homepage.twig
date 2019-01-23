@@ -10,17 +10,33 @@
 
 {% block content %}
     <div class="box">
-        <h3 class="has-text-centered underline">Popular Searches</h3>
+        <h3 class="has-text-centered italic">Popular Searches</h3>
 
         <ul class="has-text-centered">
-            <li><a href="{{ url('results?keywords=coffee') }}">Coffee Items ☕️</a></li>
-            <li><a href="{{ url('results?keywords=cookie') }}">Cookie Biscuits 🍪</a></li>
-            <li><a href="{{ url('results?keywords=sushi') }}">Sushi 🍣️</a></li>
-            <li><a href="{{ url('results?keywords=crisps') }}">Crisps Items️</a></li>
-            <li><a href="{{ url('results?keywords=jam') }}">Jam Products</a></li>
-            <li><a href="{{ url('results?keywords=chocolate') }}">Items with Chocolate 🍫</a></li>
-            <li><a href="{{ url('results?keywords=doughnuts') }}">Doughnuts 🍩</a></li>
-            <li><a href="{{ url('results?keywords=wine') }}">Wine 🍷️</a></li>
+            <li>
+                <a href="{{ url('results?keywords=coffee') }}">Coffee Items ☕️</a>
+            </li>
+            <li>
+                <a href="{{ url('results?keywords=cookie') }}">Cookie Biscuits 🍪</a>
+            </li>
+            <li>
+                <a href="{{ url('results?keywords=sushi') }}">Sushi 🍣️</a>
+            </li>
+            <li>
+                <a href="{{ url('results?keywords=crisps') }}">Crisps Items️</a>
+            </li>
+            <li>
+                <a href="{{ url('results?keywords=jam') }}">Jam Products</a>
+            </li>
+            <li>
+                <a href="{{ url('results?keywords=chocolate') }}">Items with Chocolate 🍫</a>
+            </li>
+            <li>
+                <a href="{{ url('results?keywords=doughnuts') }}">Doughnuts 🍩</a>
+            </li>
+            <li>
+                <a href="{{ url('results?keywords=wine') }}">Wine 🍷️</a>
+            </li>
         </ul>
     </div>
 {% endblock %}
