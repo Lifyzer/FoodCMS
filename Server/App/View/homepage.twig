@@ -7,3 +7,18 @@
 {% block heading %}
     <h2>Hello. What foodstuff do you need to decrypt?</h2>
 {% endblock %}
+
+{% block content %}
+    <h3 class="underline">Popular Searches</h3>
+
+    <ul>
+        <li><a href="{{ url('results?keywords=coffee') }}">Coffee Items ☕️</a></li>
+        <li><a href="{{ url('results?keywords=cookie') }}">Cookie Biscuits 🍪</a></li>
+        <li><a href="{{ url('results?keywords=sushi') }}">Sushi 🍣️</a></li>
+        <li><a href="{{ url('results?keywords=crisps') }}">Crisps Items️</a></li>
+        <li><a href="{{ url('results?keywords=jam') }}">Jam Products</a></li>
+        <li><a href="{{ url('results?keywords=chocolate') }}">Items with Chocolate 🍫</a></li>
+        <li><a href="{{ url('results?keywords=doughnuts') }}">Doughnuts 🍩</a></li>
+        <li><a href="{{ url('results?keywords=wine') }}">Wine 🍷️</a></li>
+    </ul>
+{% endblock %}
