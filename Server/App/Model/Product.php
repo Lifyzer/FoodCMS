@@ -18,7 +18,7 @@ use stdClass;
 class Product
 {
     private const QUERY_GET_PRODUCT = 'SELECT * FROM product WHERE id = :productId LIMIT 1';
-    private const QUERY_SEARCH_PRODUCT = 'SELECT * FROM product WHERE product_name LIKE :keywords';
+    private const QUERY_SEARCH_PRODUCT = 'SELECT * FROM product WHERE product_name LIKE LOWER(:keywords)';
 
     /** @var PDO */
     private $db;
@@ -39,6 +39,8 @@ class Product
 
     public function search(string $keywords): array
     {
+        $keywords = strtolower($keywords);
+
         $stmt = $this->db->prepare(self::QUERY_SEARCH_PRODUCT);
         $stmt->bindValue('keywords', '%' . $keywords . '%', PDO::PARAM_STR);
         $stmt->execute();
