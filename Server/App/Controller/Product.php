@@ -85,7 +85,9 @@ class Product extends Base
 
     public function result(array $data): void
     {
-        $items = $this->productModel->search($data['keywords']);
+        $keywords = $data['keywords'];
+        $items = $this->productModel->search($keywords);
+
         if (!empty($items) && is_array($items)) {
             $this->view->display(
                 self::RESULTS_PRODUCT_VIEW_FILE,
@@ -93,6 +95,7 @@ class Product extends Base
                     'siteUrl' => SITE_URL,
                     'siteName' => SITE_NAME,
                     'pageName' => 'Foodstuffs Results',
+                    'keywords' => $keywords,
                     'items' => $items
                 ]
             );
