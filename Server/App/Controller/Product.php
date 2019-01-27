@@ -58,7 +58,8 @@ class Product extends Base
                     'siteUrl' => SITE_URL,
                     'siteName' => SITE_NAME,
                     'pageName' => $productData->product_name,
-                    'item' => $productData
+                    'item' => $productData,
+                    'itemPlaceholder' => SITE_URL . 'static/img/product/noimage.svg'
                 ]
             );
         } else {

@@ -18,7 +18,13 @@
 
         <div class="col s4">
             <p>
-                <img src="{{ item.product_image }}" alt="{{ item.product_name }}" />
+                {% if item.product_image %}
+                    {% set productImage = item.product_image %}
+                {% else %}
+                    {% set productImage = itemPlaceholder %}
+                {% endif %}
+
+                <img src="{{ productImage }}" alt="{{ item.product_name }}" />
             </p>
 
             <p>Share with your Friends' Circle!</p>
