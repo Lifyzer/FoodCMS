@@ -48,7 +48,8 @@ class Product extends Base
 
     public function show(array $data): void
     {
-        $productData = $this->productModel->get($data['productId']);
+        $productId = (int)$data['id'];
+        $productData = $this->productModel->get($productId);
 
         if (!empty($productData) && $productData instanceof stdClass) {
             $this->view->display(
