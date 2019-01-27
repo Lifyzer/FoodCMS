@@ -69,10 +69,7 @@ class Product extends Base
     {
         $keywords = $this->httpRequest->request->get('keywords');
         if ($keywords && strlen($keywords) > 0) {
-            header(
-                sprintf('Location: %s/results/%s', SITE_URL, $keywords)
-            );
-            exit;
+            $this->redirectKeywordsToResults($keywords);
         }
 
         $this->view->display(
@@ -111,6 +108,13 @@ class Product extends Base
     private function redirectToHomepage(): void
     {
         header('Location: ' . SITE_URL);
+        exit;
+    }
+
+    private function redirectKeywordsToResults(string $keywords): void
+    {
+        $url = SITE_URL . 'results/' . $keywords;
+        header('Location: ' . $url);
         exit;
     }
 }
