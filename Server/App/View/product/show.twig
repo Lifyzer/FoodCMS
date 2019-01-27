@@ -19,12 +19,12 @@
         <div class="col s4">
             <p>
                 {% if item.product_image %}
-                    {% set productImage = item.product_image %}
+                    {% set product_image = item.product_image %}
                 {% else %}
-                    {% set productImage = itemPlaceholder %}
+                    {% set product_image = itemPlaceholder %}
                 {% endif %}
 
-                <img src="{{ productImage }}" alt="{{ item.product_name }}" />
+                <img src="{{ product_image }}" alt="{{ item.product_name }}" />
             </p>
 
             <p>Share with your Friends' Circle!</p>
