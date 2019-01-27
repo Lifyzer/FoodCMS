@@ -46,9 +46,9 @@ class Product extends Base
         $this->view->display(self::INDEX_PRODUCT_VIEW_FILE);
     }
 
-    public function show(int $productId): void
+    public function show(array $data): void
     {
-        $productData = $this->productModel->get($productId);
+        $productData = $this->productModel->get($data['productId']);
 
         if (!empty($productData) && $productData instanceof stdClass) {
             $this->view->display(
