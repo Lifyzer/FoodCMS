@@ -11,15 +11,10 @@ declare(strict_types=1);
 namespace Lifyzer\Server\App\Controller;
 
 use Lifyzer\Server\App\Model\Product as ProductModel;
-use Lifyzer\Server\Core\Container\Provider\Monolog;
 use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
-use PDOException;
 use Psr\Container\ContainerInterface;
-use Psr\Log\LoggerInterface;
 use stdClass;
 use Swift_Mailer;
-use Swift_Message;
-use Symfony\Component\HttpFoundation\ParameterBag;
 
 class Product extends Base
 {
