@@ -67,6 +67,14 @@ class Product extends Base
 
     public function search(): void
     {
+        $keywords = $this->httpRequest->request->get('keywords');
+        if ($keywords && strlen($keywords) > 0) {
+            header(
+                sprintf('Location: %s/results/%s', SITE_URL, $keywords)
+            );
+            exit;
+        }
+
         $this->view->display(
             self::SEARCH_PRODUCT_VIEW_FILE,
             [
@@ -77,13 +85,10 @@ class Product extends Base
         );
     }
 
-    public function result(): void
+    public function result(array $data): void
     {
-        $keywords = $this->httpRequest->query->get('keywords');
-
-        if ($keywords) {
-            $items = $this->productModel->search($keywords);
-
+        $items = $this->productModel->search($data['keywords']);
+        if (!empty($items) && is_array($items)) {
             $this->view->display(
                 self::RESULTS_PRODUCT_VIEW_FILE,
                 [
