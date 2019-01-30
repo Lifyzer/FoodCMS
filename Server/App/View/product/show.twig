@@ -6,19 +6,46 @@
            <h1>{{ item.product_name }}</h1>
 
             <!-- Chart.js -->
-            <dl>
-                <dt>Ingredients 🍽</dt>
-                <dd>{{ item.ingredients }}</dd>
-                <dt>Salt 🧂</dt>
-                <dd>{{ item.salt }}gr</dd>
-                <dt>Sugar 🍪</dt>
-                <dd>{{ item.sugar }}</dd>
-                <dt>Protein 🥚</dt>
-                <dd>{{ item.protein }}</dd>
-                <dt>Alcohol 🍸</dt>
-                <dd>{{ item.alcohol }}</dd>
-                <dt>Carbohydrate 🥛</dt>
-                <dd>{{ item.carbohydrate }}</dd>
+            <dl class="center">
+                {% if item.ingredients %}
+                    <dt>Ingredients 🌮</dt>
+                    <dd>{{ item.ingredients }}</dd>
+                {% endif %}
+
+                {% if item.salt %}
+                    <dt>Salt 🧂</dt>
+                    <dd>{{ item.salt }}gr</dd>
+                {% endif %}
+
+                {% if item.sugar %}
+                    <dt>Sugar 🍪</dt>
+                    <dd>{{ item.sugar }}</dd>
+                {% endif %}
+
+                {% if item.protein %}
+                    <dt>Protein 🥚</dt>
+                    <dd>{{ item.protein }}</dd>
+                {% endif %}
+
+                {% if item.carbohydrate %}
+                    <dt>Carbohydrate 🥛</dt>
+                    <dd>{{ item.carbohydrate }}</dd>
+                {% endif %}
+
+                {% if item.dietary_fiber %}
+                    <dt>Fiber</dt>
+                    <dd>{{ item.dietary_fiber }}</dd>
+                {% endif %}
+
+                {% if item.sodium %}
+                    <dt>Sodium</dt>
+                    <dd>{{ item.sodium }}</dd>
+                {% endif %}
+
+                {% if item.alcohol %}
+                    <dt>Alcohol 🍸</dt>
+                    <dd>{{ item.alcohol }}</dd>
+                {% endif %}
             </dl>
         </div>
 
