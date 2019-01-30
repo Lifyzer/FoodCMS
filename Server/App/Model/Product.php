@@ -18,7 +18,7 @@ use stdClass;
 class Product
 {
     private const QUERY_GET_PRODUCT = 'SELECT * FROM product WHERE id = :productId LIMIT 1';
-    private const QUERY_SEARCH_PRODUCT = 'SELECT * FROM product WHERE product_name LIKE LOWER(:keywords)';
+    private const QUERY_SEARCH_PRODUCT = 'SELECT * FROM product WHERE product_name LIKE LOWER(:keywords) ORDER BY product_name ASC';
 
     /** @var PDO */
     private $db;
