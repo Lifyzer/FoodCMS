@@ -12,12 +12,16 @@ namespace Lifyzer\Server\App\Controller;
 
 use Lifyzer\Server\App\Model\Product as ProductModel;
 use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
+use Pagerfanta\Adapter\ArrayAdapter;
+use Pagerfanta\Pagerfanta;
 use Psr\Container\ContainerInterface;
 use stdClass;
 use Swift_Mailer;
 
 class Product extends Base
 {
+    private const ITEMS_PER_PAGE = 20;
+
     private const INDEX_PRODUCT_VIEW_FILE = 'homepage.twig';
     private const SHOW_PRODUCT_VIEW_FILE = 'product/show.twig';
     private const SEARCH_PRODUCT_VIEW_FILE = 'product/search.twig';
@@ -87,7 +91,20 @@ class Product extends Base
     public function result(array $data): void
     {
         $keywords = $data['keywords'];
-        $items = $this->productModel->search($keywords);
+
+        $adapter = new ArrayAdapter(
+            $this->productModel->search($keywords)
+        );
+        $pagerfanta = new Pagerfanta($adapter);
+        $pagerfanta->setMaxPerPage(self::ITEMS_PER_PAGE);
+
+        if (isset($data['page'])) {
+            $pagerfanta->setCurrentPage($data['page']);
+        }
+
+        $offset = $pagerfanta->getCurrentPageOffsetStart();
+        $limit = $pagerfanta->getMaxPerPage();
+        $items = $this->productModel->search($keywords, $offset, $limit);
 
         if (!empty($items) && is_array($items)) {
             $this->view->display(
