@@ -1,0 +1,7 @@
+{% extends "layouts/base.twig" %}
+
+{% block content %}
+    {% for post in posts %}
+        <h1>{{ post.postName }}</h1>
+    {% endfor %}
+{% endblock %}
