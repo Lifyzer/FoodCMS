@@ -18,7 +18,7 @@ class Post extends Base
     private const HOMEPAGE_POSTS_VIEW_FILE = 'post/posts.twig';
     private const POST_VIEW_FILE = 'post/post.twig';
 
-    private const POSTS_DATA_PATH = '../../data/posts/en/';
+    private const POSTS_DATA_PATH = __DIR__ . '/../../data/posts/en/';
     private const POST_FILE_EXT = '.md';
 
     /** @var ContainerInterface */
