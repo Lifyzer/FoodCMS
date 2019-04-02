@@ -33,20 +33,36 @@ class Post extends Base
 
     public function homepage(): void
     {
-        $this->view->display(self::HOMEPAGE_POSTS_VIEW_FILE, $this->getPostsList());
+        $data = [
+            'siteUrl' => SITE_URL,
+            'siteName' => SITE_NAME,
+            'pageName' => 'Healthy Posts. For Read Lovers!',
+        ];
+
+        $data['posts'] = $this->getPostsList();
+
+        $this->view->display(self::HOMEPAGE_POSTS_VIEW_FILE, $data);
     }
 
     public function post(array $data): void
     {
-        $postId = (int)$data['post_name'];
+        $postName = $data['post_name'];
 
-        if (is_file(self::POSTS_DATA_PATH . $postId . self::POST_FILE_EXT)) {
+        if (is_file(self::POSTS_DATA_PATH . $postName . self::POST_FILE_EXT)) {
             $parsedown = new Parsedown();
             $postData = $parsedown->text(
-                file_get_contents(self::POSTS_DATA_PATH . $postId . self::POST_FILE_EXT)
+                file_get_contents(self::POSTS_DATA_PATH . $postName . self::POST_FILE_EXT)
             );
 
-            $this->view->display(self::POST_VIEW_FILE, $postData);
+            $data = [
+                'siteUrl' => SITE_URL,
+                'siteName' => SITE_NAME,
+                'pageName' => $postName,
+                'keywords' => $postName,
+                'content' => $postData
+            ];
+
+            $this->view->display(self::POST_VIEW_FILE, $data);
         } else {
             (new Error($this->container))->notFound();
         }
@@ -54,6 +70,20 @@ class Post extends Base
 
     private function getPostsList(): array
     {
-        return glob(self::POSTS_DATA_PATH);
+        $files = glob(
+            sprintf('%s*%s', self::POSTS_DATA_PATH, self::POST_FILE_EXT)
+        );
+
+        return array_map(
+            function ($file) {
+                return str_replace(
+                    [
+                        self::POSTS_DATA_PATH,
+                        self::POST_FILE_EXT,
+                    ],
+                    '',
+                    $file
+                );
+            }, $files);
     }
 }

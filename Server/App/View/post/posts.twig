@@ -4,7 +4,7 @@
     {% for post in posts %}
         <h1>
             <a href="{{ url('post/' ~ post) }}">
-                {{ post|replace('-', ' ')|capitalize }}
+                {{ post|replace({'-': ' '})|title }}
             </a>
         </h1>
     {% endfor %}
