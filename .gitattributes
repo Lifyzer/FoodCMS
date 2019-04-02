@@ -1,0 +1,7 @@
+## Exclude dev files/folders from distribution
+
+/Test export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+phpunit.xml.dist export-ignore
+save-project.sh export-ignore
