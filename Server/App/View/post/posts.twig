@@ -2,6 +2,10 @@
 
 {% block content %}
     {% for post in posts %}
-        <h1>{{ post.postName }}</h1>
+        <h1>
+            <a href="{{ url('post/' ~ post) }}">
+                {{ post|replace('-', ' ')|capitalize }}
+            </a>
+        </h1>
     {% endfor %}
 {% endblock %}

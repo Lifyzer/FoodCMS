@@ -18,7 +18,7 @@ class Post extends Base
     private const HOMEPAGE_POSTS_VIEW_FILE = 'posts.twig';
     private const POST_VIEW_FILE = 'post.twig';
 
-    private const POSTS_DATA_PATH = 'data/posts/en/';
+    private const POSTS_DATA_PATH = '../../data/posts/en/';
     private const POST_FILE_EXT = '.md';
 
     /** @var ContainerInterface */
@@ -33,7 +33,7 @@ class Post extends Base
 
     public function homepage(): void
     {
-        $this->view->display(self::HOMEPAGE_POSTS_VIEW_FILE);
+        $this->view->display(self::HOMEPAGE_POSTS_VIEW_FILE, $this->getPostsList());
     }
 
     public function post(array $data): void
@@ -50,5 +50,10 @@ class Post extends Base
         } else {
             (new Error($this->container))->notFound();
         }
+    }
+
+    private function getPostsList(): array
+    {
+        return glob(self::POSTS_DATA_PATH);
     }
 }
