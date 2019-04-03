@@ -48,7 +48,7 @@ class Post extends Base
     {
         $postName = $data['post_name'];
 
-        if (is_file(self::POSTS_DATA_PATH . $postName . self::POST_FILE_EXT)) {
+        if ($this->isPostFound($postName)) {
             $parsedown = new Parsedown();
             $postData = $parsedown->text(
                 file_get_contents(self::POSTS_DATA_PATH . $postName . self::POST_FILE_EXT)
@@ -66,6 +66,11 @@ class Post extends Base
         } else {
             (new Error($this->container))->notFound();
         }
+    }
+
+    private function isPostFound(string $filename): bool
+    {
+        return is_file(self::POSTS_DATA_PATH . $filename . self::POST_FILE_EXT);
     }
 
     private function getPostsList(): array
