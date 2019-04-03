@@ -80,7 +80,7 @@ class Post extends Base
         );
 
         return array_map(
-            static function ($file) {
+            static function (string $file) {
                 return str_replace(
                     [
                         self::POSTS_DATA_PATH,
