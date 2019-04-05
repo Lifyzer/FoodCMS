@@ -6,9 +6,14 @@
 
     RewriteEngine On
 
+    # Enable HSTS header to increases security of your website & SEO
+    <IfModule mod_headers.c>
+        Header set Strict-Transport-Security "max-age=31536000; preload" env=HTTPS
+    </IfModule>
+
     # Remove www subdomain in the URL
-    # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    # RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
     # Force the URL to be https (only if you have an SSL certificate)
     # RewriteCond %{SERVER_PORT} 80
