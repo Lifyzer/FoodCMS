@@ -6,7 +6,7 @@
 
     RewriteEngine On
 
-    # Enable HSTS header to increases security of your website & SEO
+    # Enable HSTS header to increase security of your website & SEO
     <IfModule mod_headers.c>
         Header set Strict-Transport-Security "max-age=31536000; preload" env=HTTPS
     </IfModule>
