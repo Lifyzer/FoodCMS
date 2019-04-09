@@ -79,6 +79,11 @@ class Post extends Base
             sprintf('%s*%s', self::POSTS_DATA_PATH, self::POST_FILE_EXT)
         );
 
+        return $this->cleanPostFilenames($files);
+    }
+
+    private function cleanPostFilenames(array $files): array
+    {
         return array_map(
             static function (string $file) {
                 return str_replace(
