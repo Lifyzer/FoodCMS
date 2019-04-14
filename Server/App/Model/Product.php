@@ -18,7 +18,7 @@ use stdClass;
 class Product
 {
     private const QUERY_GET_PRODUCT = 'SELECT * FROM product WHERE id = :productId LIMIT 1';
-    private const QUERY_SEARCH_PRODUCT = 'SELECT * FROM product WHERE product_name LIKE LOWER(:keywords) ORDER BY product_name ASC LIMIT :offset, :limit';
+    private const QUERY_SEARCH_PRODUCT = 'SELECT * FROM product WHERE product_name LIKE LOWER(:keywords) ORDER BY product_name ASC';
 
     /** @var PDO */
     private $db;
@@ -37,14 +37,21 @@ class Product
         return $stmt->fetchObject();
     }
 
-    public function search(string $keywords, int $offset, int $limit): array
+    public function search(string $keywords, int $offset = null, int $limit = null): array
     {
         $keywords = strtolower($keywords);
 
-        $stmt = $this->db->prepare(self::QUERY_SEARCH_PRODUCT);
+        $query = self::QUERY_SEARCH_PRODUCT;
+        if (isset($offset, $limit)) {
+            $query .= ' LIMIT :offset, :limit';
+        }
+        $stmt = $this->db->prepare($query);
+
         $stmt->bindValue('keywords', '%' . $keywords . '%', PDO::PARAM_STR);
-        $stmt->bindParam('offset', $offset, PDO::PARAM_INT);
-        $stmt->bindParam('limit', $limit, PDO::PARAM_INT);
+        if (isset($offset, $limit)) {
+            $stmt->bindParam('offset', $offset, PDO::PARAM_INT);
+            $stmt->bindParam('limit', $limit, PDO::PARAM_INT);
+        }
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_OBJ);
