@@ -1,6 +1,7 @@
 <ul class="pagination">
-    <li {% if currentPage == 1 %}class="disabled"{% endif %}>
-        <a href="{{ url('results/' ~ keywords ~ '/' ~ 1) }}">
+    {% set className = (currentPage == 1) ? 'disabled' : 'waves-effect' %}
+    <li class="{{ className }}">
+        <a href="{{ url('results/' ~ keywords ~ '/' ~ 1) }}" title="First page">
             <i class="material-icons">chevron_left</i>
         </a>
     </li>
@@ -20,8 +21,9 @@
         {% endif %}
     {% endfor %}
 
-    <li class="waves-effect">
-        <a {% if currentPage == totalPages %}class="disabled"{% endif %} href="{{ url('results/' ~ keywords ~ '/' ~ totalPages) }}">
+    {% set className = (currentPage == totalPages) ? 'disabled' : 'waves-effect' %}
+    <li class="{{ className }}">
+        <a href="{{ url('results/' ~ keywords ~ '/' ~ totalPages) }}" title="Last page">
             <i class="material-icons">chevron_right</i>
         </a>
     </li>
