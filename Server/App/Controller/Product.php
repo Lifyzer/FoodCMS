@@ -22,6 +22,7 @@ class Product extends Base
 {
     private const ITEMS_PER_PAGE = 20;
 
+    private const NEARBY_PAGES_LIMIT = 4;
     private const INDEX_PRODUCT_VIEW_FILE = 'homepage.twig';
     private const SHOW_PRODUCT_VIEW_FILE = 'product/show.twig';
     private const SEARCH_PRODUCT_VIEW_FILE = 'product/search.twig';
@@ -114,7 +115,10 @@ class Product extends Base
                     'siteName' => SITE_NAME,
                     'pageName' => 'Foodstuffs Results',
                     'keywords' => $keywords,
-                    'items' => $items
+                    'items' => $items,
+                    'nearbyPagesLimit' => self::NEARBY_PAGES_LIMIT,
+                    'currentPage' => $pagerfanta->getCurrentPage(),
+                    'totalPages' => $pagerfanta->getNbPages()
                 ]
             );
         } else {

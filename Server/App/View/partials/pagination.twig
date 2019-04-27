@@ -1,0 +1,25 @@
+<ul class="pagination">
+    <li {% if currentPage == 1 %}class="disabled"{% endif %}>
+        <a href="{{ url('results/' ~ keywords ~ '/' ~ 1) }}">
+            <i class="material-icons">chevron_left</i>
+        </a>
+    </li>
+
+    {% for nbPage in 1..totalPages %}
+        {% if (0 == (currentPage - nearbyPagesLimit) - loop.index) or (0 == (currentPage + nearbyPagesLimit) - loop.index) %}
+            <li class="disabled"><a href="#!">...</a></li>
+        {% else %}
+            {% set className = (currentPage == loop.index) ? 'active' : 'waves-effect' %}
+            <li class="{{ className }}">
+                <a href="{{ url('results/' ~ keywords ~ '/' ~ loop.index) }}">{{ loop.index }}
+                </a>
+            </li>
+        {% endig %}
+    {% endfor %}
+
+    <li class="waves-effect">
+        <a {% if currentPage == totalPages %}class="disabled"{% endif %} href="{{ url('results/' ~ keywords ~ '/' ~ totalPages) }}">
+            <i class="material-icons">chevron_right</i>
+        </a>
+    </li>
+</ul>
