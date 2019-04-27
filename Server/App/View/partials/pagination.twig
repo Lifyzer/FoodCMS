@@ -7,14 +7,17 @@
 
     {% for nbPage in 1..totalPages %}
         {% if (0 == (currentPage - nearbyPagesLimit) - loop.index) or (0 == (currentPage + nearbyPagesLimit) - loop.index) %}
-            <li class="disabled"><a href="#!">...</a></li>
+            <li class="disabled">
+                <a href="#!" title="Further pages to see">...</a>
+            </li>
         {% else %}
             {% set className = (currentPage == loop.index) ? 'active' : 'waves-effect' %}
             <li class="{{ className }}">
-                <a href="{{ url('results/' ~ keywords ~ '/' ~ loop.index) }}">{{ loop.index }}
+                <a href="{{ url('results/' ~ keywords ~ '/' ~ loop.index) }}">
+                    {{ loop.index }}
                 </a>
             </li>
-        {% endig %}
+        {% endif %}
     {% endfor %}
 
     <li class="waves-effect">
