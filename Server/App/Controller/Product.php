@@ -32,9 +32,6 @@ class Product extends Base
     /** @var ProductModel */
     private $productModel;
 
-    /** @var Swift_Mailer */
-    private $mailer;
-
     /** @var ContainerInterface */
     private $container;
 
@@ -42,7 +39,6 @@ class Product extends Base
     {
         parent::__construct($container);
 
-        $this->mailer = $container->get(SwiftMailer::class);
         $this->productModel = new ProductModel($container);
         $this->container = $container;
     }
