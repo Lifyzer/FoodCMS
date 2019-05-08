@@ -1,7 +1,7 @@
 <ul class="pagination">
     {% set className = (currentPage == 1) ? 'disabled' : 'waves-effect' %}
     <li class="{{ className }}">
-        <a href="{{ url('results/' ~ keywords ~ '/' ~ 1) }}" title="First page">
+        <a href="{{ url('results/' ~ keywords ~ '/page-1') }}" title="First page">
             <i class="material-icons">chevron_left</i>
         </a>
     </li>
@@ -14,7 +14,7 @@
         {% else %}
             {% set className = (currentPage == loop.index) ? 'active' : 'waves-effect' %}
             <li class="{{ className }}">
-                <a href="{{ url('results/' ~ keywords ~ '/' ~ loop.index) }}">
+                <a href="{{ url('results/' ~ keywords ~ '/page-' ~ loop.index) }}">
                     {{ loop.index }}
                 </a>
             </li>
@@ -23,7 +23,7 @@
 
     {% set className = (currentPage == totalPages) ? 'disabled' : 'waves-effect' %}
     <li class="{{ className }}">
-        <a href="{{ url('results/' ~ keywords ~ '/' ~ totalPages) }}" title="Last page">
+        <a href="{{ url('results/' ~ keywords ~ '/page-' ~ totalPages) }}" title="Last page">
             <i class="material-icons">chevron_right</i>
         </a>
     </li>

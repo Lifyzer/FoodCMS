@@ -13,7 +13,7 @@ use function FastRoute\simpleDispatcher;
 return simpleDispatcher(function (RouteCollector $route) {
     $route->addRoute('GET', '/', 'Product@homepage');
     $route->addRoute('POST', '/search', 'Product@search');
-    $route->addRoute('GET', '/results/{keywords:\w+}[/{page:\d+}]', 'Product@result');
+    $route->addRoute('GET', '/results/{keywords:\w+}[/page-{page:\d+}]', 'Product@result');
     $route->addRoute('GET', '/product/{id:\d+}', 'Product@show');
     $route->addRoute('GET', '/posts', 'Post@homepage');
     $route->addRoute('GET', '/post/{post_name}', 'Post@post');
