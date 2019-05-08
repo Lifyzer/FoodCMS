@@ -93,41 +93,45 @@ class Product extends Base
     {
         $keywords = $data['keywords'];
 
-        $adapter = new ArrayAdapter(
-            $this->productModel->search($keywords)
-        );
-        $pagerfanta = new Pagerfanta($adapter);
-        $pagerfanta->setMaxPerPage(self::ITEMS_PER_PAGE);
-
-        if (isset($data['page'])) {
-            $pagerfanta->setCurrentPage($data['page']);
-        }
-
-        $offset = $pagerfanta->getCurrentPageOffsetStart();
-        $limit = $pagerfanta->getMaxPerPage();
-        $items = $this->productModel->search($keywords, $offset, $limit);
-
-        if (!empty($items) && is_array($items)) {
-            $this->view->display(
-                self::RESULTS_PRODUCT_VIEW_FILE,
-                [
-                    'siteUrl' => SITE_URL,
-                    'siteName' => SITE_NAME,
-                    'pageName' => 'Foodstuffs Results',
-                    'keywords' => $keywords,
-                    'items' => $items,
-                    'nearbyPagesLimit' => self::NEARBY_PAGES_LIMIT,
-                    'currentPage' => $pagerfanta->getCurrentPage(),
-                    'totalPages' => $pagerfanta->getNbPages()
-                ]
+        try {
+            $adapter = new ArrayAdapter(
+                $this->productModel->search($keywords)
             );
-        } else {
-            $this->view->display(
-                self::INDEX_PRODUCT_VIEW_FILE,
-                [
-                    'error_msg' => 'Item not found'
-                ]
-            );
+            $pagerfanta = new Pagerfanta($adapter);
+            $pagerfanta->setMaxPerPage(self::ITEMS_PER_PAGE);
+
+            if (isset($data['page'])) {
+                $pagerfanta->setCurrentPage($data['page']);
+            }
+
+            $offset = $pagerfanta->getCurrentPageOffsetStart();
+            $limit = $pagerfanta->getMaxPerPage();
+            $items = $this->productModel->search($keywords, $offset, $limit);
+
+            if (!empty($items) && is_array($items)) {
+                $this->view->display(
+                    self::RESULTS_PRODUCT_VIEW_FILE,
+                    [
+                        'siteUrl' => SITE_URL,
+                        'siteName' => SITE_NAME,
+                        'pageName' => 'Foodstuffs Results',
+                        'keywords' => $keywords,
+                        'items' => $items,
+                        'nearbyPagesLimit' => self::NEARBY_PAGES_LIMIT,
+                        'currentPage' => $pagerfanta->getCurrentPage(),
+                        'totalPages' => $pagerfanta->getNbPages()
+                    ]
+                );
+            } else {
+                $this->view->display(
+                    self::INDEX_PRODUCT_VIEW_FILE,
+                    [
+                        'error_msg' => 'Item not found'
+                    ]
+                );
+            }
+        } catch (OutOfRangeCurrentPageException $except) {
+            (new Error($this->container))->notFound();
         }
     }
 

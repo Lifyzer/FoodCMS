@@ -16,7 +16,7 @@ class Error extends Base
 {
     private const FILENAME = 'error.twig';
 
-    private const NOT_FOUND_PAGE_NAME = 'Page Not Found';
+    private const NOT_FOUND_PAGE_NAME = 'Page Not Found!';
     private const INTERNAL_ERROR_PAGE_NAME = 'Internal Error';
 
     private const NOT_FOUND_MESSAGE = "The page doesn't exist";
