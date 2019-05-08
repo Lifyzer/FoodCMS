@@ -13,6 +13,7 @@ namespace Lifyzer\Server\App\Controller;
 use Lifyzer\Server\App\Model\Product as ProductModel;
 use Lifyzer\Server\Core\Container\Provider\SwiftMailer;
 use Pagerfanta\Adapter\ArrayAdapter;
+use Pagerfanta\Exception\OutOfRangeCurrentPageException;
 use Pagerfanta\Pagerfanta;
 use Psr\Container\ContainerInterface;
 use stdClass;
