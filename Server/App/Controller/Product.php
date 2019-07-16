@@ -93,7 +93,7 @@ class Product extends Base
         if (!empty($results) && is_array($results)) {
             // If there is only one item found, redirect directly to the product page
             if (count($results) === 1) {
-                $itemId = $results[0]->id;
+                $itemId = (int)$results[0]->id;
                 $this->redirectToProductPage($itemId);
             } else {
                 // If more than one item is found, show the results page
