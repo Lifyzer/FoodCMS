@@ -87,46 +87,54 @@ class Product extends Base
     public function result(array $data): void
     {
         $keywords = $data['keywords'];
+        $results = $this->productModel->search($keywords);
 
-        try {
-            $adapter = new ArrayAdapter(
-                $this->productModel->search($keywords)
-            );
-            $pagerfanta = new Pagerfanta($adapter);
-            $pagerfanta->setMaxPerPage(self::ITEMS_PER_PAGE);
-
-            if (isset($data['page'])) {
-                $pagerfanta->setCurrentPage($data['page']);
-            }
-
-            $offset = $pagerfanta->getCurrentPageOffsetStart();
-            $limit = $pagerfanta->getMaxPerPage();
-            $items = $this->productModel->search($keywords, $offset, $limit);
-
-            if (!empty($items) && is_array($items)) {
-                $this->view->display(
-                    self::RESULTS_PRODUCT_VIEW_FILE,
-                    [
-                        'siteUrl' => SITE_URL,
-                        'siteName' => SITE_NAME,
-                        'pageName' => 'Foodstuffs Results',
-                        'keywords' => $keywords,
-                        'items' => $items,
-                        'nearbyPagesLimit' => self::NEARBY_PAGES_LIMIT,
-                        'currentPage' => $pagerfanta->getCurrentPage(),
-                        'totalPages' => $pagerfanta->getNbPages()
-                    ]
-                );
+        // If something is found
+        if (!empty($results) && is_array($results)) {
+            // If there is only one item found, redirect directly to the product page
+            if (count($results) === 1) {
+                $this->redirectToProductPage($results[0]['id']);
             } else {
-                $this->view->display(
-                    self::INDEX_PRODUCT_VIEW_FILE,
-                    [
-                        'error_msg' => 'Item not found'
-                    ]
-                );
+                // If more than one item is found, show the results page
+                try {
+                    $adapter = new ArrayAdapter(
+                        $results
+                    );
+                    $pagerfanta = new Pagerfanta($adapter);
+                    $pagerfanta->setMaxPerPage(self::ITEMS_PER_PAGE);
+
+                    if (isset($data['page'])) {
+                        $pagerfanta->setCurrentPage($data['page']);
+                    }
+
+                    $offset = $pagerfanta->getCurrentPageOffsetStart();
+                    $limit = $pagerfanta->getMaxPerPage();
+                    $items = $this->productModel->search($keywords, $offset, $limit);
+
+                    $this->view->display(
+                        self::RESULTS_PRODUCT_VIEW_FILE,
+                        [
+                            'siteUrl' => SITE_URL,
+                            'siteName' => SITE_NAME,
+                            'pageName' => 'Foodstuffs Results',
+                            'keywords' => $keywords,
+                            'items' => $items,
+                            'nearbyPagesLimit' => self::NEARBY_PAGES_LIMIT,
+                            'currentPage' => $pagerfanta->getCurrentPage(),
+                            'totalPages' => $pagerfanta->getNbPages()
+                        ]
+                    );
+                } catch (OutOfRangeCurrentPageException $except) {
+                    (new Error($this->container))->notFound();
+                }
             }
-        } catch (OutOfRangeCurrentPageException $except) {
-            (new Error($this->container))->notFound();
+        } else {
+            $this->view->display(
+                self::INDEX_PRODUCT_VIEW_FILE,
+                [
+                    'error_msg' => 'Items not found'
+                ]
+            );
         }
     }
 
@@ -139,6 +147,13 @@ class Product extends Base
     private function redirectKeywordsToResults(string $keywords): void
     {
         $url = SITE_URL . 'results/' . $keywords;
+        header('Location: ' . $url);
+        exit;
+    }
+
+    private function redirectToProductPage(int $itemId): void
+    {
+        $url = SITE_URL . 'product/' . $itemId;
         header('Location: ' . $url);
         exit;
     }
