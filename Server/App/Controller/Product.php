@@ -133,7 +133,7 @@ class Product extends Base
             $this->view->display(
                 self::INDEX_PRODUCT_VIEW_FILE,
                 [
-                    'error_msg' => 'Items not found'
+                    'error_msg' => 'Item not found 🤭 Try with a different name 😋'
                 ]
             );
         }
