@@ -19,7 +19,7 @@ You can always reach me at *hi [[AT]] ph7 [[D0T]] me*! I will be pleased to talk
 
 ## Project Website 🚀
 
-🍇 [Lifyzer️](https://lifyzer.com) 🥥
+🍇 [Lifyzer️](https://lifyzer.com), Healthy Food Solution™ 🥥
 
 
 ## Setting It Up ⚙️
