@@ -10,7 +10,7 @@ namespace Lifyzer\Server;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 
-return simpleDispatcher(function (RouteCollector $route) {
+return simpleDispatcher(static function (RouteCollector $route) {
     $route->addRoute('GET', '/', 'Product@homepage');
     $route->addRoute('POST', '/search', 'Product@search');
     $route->addRoute('GET', '/results/{keywords:\w+}[/page-{page:\d+}]', 'Product@result');
