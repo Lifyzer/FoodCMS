@@ -26,9 +26,20 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new PrettyPageHandler);
 $whoops->register();
 
+$requiredEnvFields = [
+    'SITE_URL',
+    'SITE_NAME',
+    'ADMIN_EMAIL',
+    'DB_HOST',
+    'DB_USER',
+    'DB_PWD',
+    'DB_NAME',
+    'LOGGING_CHANNEL'
+];
 
 $env = Dotenv::createImmutable(__DIR__ . '/Server/config');
 $env->load();
+$env->required($requiredEnvFields)->notEmpty();
 
 define('SITE_NAME', getenv('SITE_NAME'));
 define('SITE_URL', getenv('SITE_URL'));
