@@ -22,14 +22,17 @@ use Whoops\Handler\PrettyPageHandler;
 
 require __DIR__ . '/Server/vendor/autoload.php';
 
-(new Dotenv(__DIR__ . '/Server/config'))->load();
-define('SITE_NAME', getenv('SITE_NAME'));
-define('SITE_URL', getenv('SITE_URL'));
-Debug::initializeMode();
-
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new PrettyPageHandler);
 $whoops->register();
+
+
+$env = Dotenv::createImmutable(__DIR__ . '/Server/config');
+$env->load();
+
+define('SITE_NAME', getenv('SITE_NAME'));
+define('SITE_URL', getenv('SITE_URL'));
+Debug::initializeMode();
 
 $container = new Container();
 $container->register(TwigContainer::class, new TwigContainer());
