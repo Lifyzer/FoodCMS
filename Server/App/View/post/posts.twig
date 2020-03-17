@@ -2,10 +2,13 @@
 
 {% block content %}
     {% for post in posts %}
-        <h1>
-            <a href="{{ url('post/' ~ post) }}">
-                {{ post|replace({'-': ' '})|title }}
-            </a>
-        </h1>
+        <div class="row border">
+            <h1>
+                <a href="{{ url('post/' ~ post) }}">
+                    {{ post|replace({'-': ' '})|title }}
+                </a>
+            </h1>
+            <hr />
+        </div>
     {% endfor %}
 {% endblock %}
