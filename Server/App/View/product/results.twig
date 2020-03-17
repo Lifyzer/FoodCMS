@@ -12,9 +12,11 @@
                             {{ item.product_name }}
                         </a>
                     </h1>
-                    <p>
-                        <em>{{ item.ingredients }}</em>
-                    </p>
+                    {% if item.ingredients %}
+                        <p>
+                            <em>{{ item.ingredients }}</em>
+                        </p>
+                    {% endif %}
                     <hr />
                 </div>
             {% endfor %}
