@@ -1,13 +1,13 @@
 {
   "name": "lifyzer/foodcms",
-  "description": "FoodCMS™ App. The CMS to show and search any foodstuffs.",
+  "description": "FoodCMS™ - The Yummy CMS to search and know any details about foodstuffs.",
   "type": "project",
   "homepage": "https://lifyzer.com",
   "authors": [
     {
       "name": "Pierre-Henry Soria",
       "email": "hi@ph7.me",
-      "homepage": "http://ph7.me"
+      "homepage": "https://ph7.me"
     }
   ],
   "config": {

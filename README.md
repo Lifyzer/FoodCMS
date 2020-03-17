@@ -5,7 +5,7 @@
 
 ## The Requirements ⚙️
 
-* 🐘 [PHP 7.2](http://php.net/releases/7_2_0.php) or newer
+* 🐘 [PHP 7.2](https://php.net/releases/7_2_0.php) or newer
 * 🎻 [Composer](https://getcomposer.org)
 
 
