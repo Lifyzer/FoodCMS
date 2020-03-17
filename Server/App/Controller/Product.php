@@ -71,7 +71,7 @@ class Product extends Base
     public function search(): void
     {
         $keywords = $this->httpRequest->request->get('keywords');
-        if ($keywords && strlen($keywords) > 0) {
+        if ($keywords && strlen($keywords) > 1) {
             $this->redirectKeywordsToResults($keywords);
         }
 
