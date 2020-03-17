@@ -26,7 +26,7 @@ class About extends Base
         $data = [
             'siteUrl' => SITE_URL,
             'siteName' => SITE_NAME,
-            'pageName' => 'About THe Tasty Lifyzer\'s Mission! 😋',
+            'pageName' => 'About The Tasty Lifyzer\'s Mission! 😋',
         ];
 
         $this->view->display(self::ABOUT_IT, $data);
