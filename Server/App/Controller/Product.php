@@ -119,7 +119,7 @@ class Product extends Base
                         [
                             'siteUrl' => SITE_URL,
                             'siteName' => SITE_NAME,
-                            'pageName' => 'Foodstuffs Results',
+                            'pageName' => 'Food Item Results',
                             'chatSupportId' => getenv('SUPPORT_CHAT_ID'),
                             'keywords' => $keywords,
                             'items' => $items,
