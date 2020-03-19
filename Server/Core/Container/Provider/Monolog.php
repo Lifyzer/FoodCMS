@@ -35,6 +35,7 @@ class Monolog implements Providable
     public function getService(): LoggerInterface
     {
         $rootPath = dirname(__DIR__, 3);
+
         $streamHandler = new StreamHandler(
             $rootPath . self::LOG_DIR . $this->name . self::LOG_EXT,
             Logger::DEBUG

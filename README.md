@@ -16,6 +16,8 @@ I'm **[Pierre-Henry Soria](https://ph7.me)**, a Cool, Passionate & Enthusiasm So
 
 You can always reach me at *hi [[AT]] ph7 [[D0T]] me*! I will be pleased to talk with you! 😊
 
+[![Pierre-Henry Soria](https://avatars0.githubusercontent.com/u/1325411?s=200)](https://ph7.me "Pierre-Henry Soria, Software Developer")
+
 
 ## Project Website 🚀
 

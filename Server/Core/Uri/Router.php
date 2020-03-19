@@ -56,7 +56,7 @@ class Router
                 $handler = $routeInfo[1];
                 $arguments = $routeInfo[2];
 
-                // PHP 7.1 new "[]" list() syntax
+                // PHP 7.1 new "[]" list() syntax :)
                 [$controller, $method] = explode(self::METHOD_DELIMITER, $handler);
                 $controller = self::CONTROLLER_NAMESPACE . $controller;
                 try {

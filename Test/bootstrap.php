@@ -6,11 +6,11 @@
  * @link           https://lifyzer.com
  */
 
+require dirname(__DIR__) . '/Server/vendor/autoload.php';
+
 /**
- * Avoid  undefined constants when running tests.
+ * Avoid undefined constants when running tests.
  */
 define('SITE_URL', 'https://lifyzer.com/app/');
 define('SITE_NAME', 'Lifyzer App');
 define('DEBUG_MODE', true);
-
-require dirname(__DIR__) . '/Server/vendor/autoload.php';
