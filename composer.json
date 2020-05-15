@@ -2,6 +2,7 @@
   "name": "lifyzer/foodcms",
   "description": "FoodCMS™ - The Yummy CMS to search and know any details about foodstuffs.",
   "type": "project",
+  "license": "GPL-3.0-or-later",
   "homepage": "https://lifyzer.com",
   "authors": [
     {
