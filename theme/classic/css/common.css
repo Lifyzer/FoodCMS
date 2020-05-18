@@ -21,7 +21,7 @@
     font-size: x-small;
 }
 
-.bold {
+dl dt, .bold {
     font-weight: bold;
 }
 
