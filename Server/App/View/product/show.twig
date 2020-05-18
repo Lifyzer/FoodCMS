@@ -59,7 +59,11 @@
                 {% else %}
                     {% set productImage, productAlt = itemPlaceholder, 'Item image not found' %}
                 {% endif %}
-                <img src="{{ productImage }}" alt="{{ productAlt }}" />
+                <img
+                    src="{{ productImage }}"
+                    alt="{{ productAlt }}"
+                    title="{{ productAlt }}"
+                />
             </p>
 
             <p class="bold">Share with your Friends' Circle!</p>
