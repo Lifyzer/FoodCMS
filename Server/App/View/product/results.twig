@@ -2,11 +2,11 @@
 
 {% block content %}
     <div class="row">
-        <div class="col s8">
+        <section class="col s8">
             <h2>Food Details for <span class="underline">{{ keywords|capitalize }}</span></h2>
 
             {% for item in items %}
-                <div class="row border">
+                <article class="row border">
                     <h1 class="underline">
                         <a href="{{ url('product/' ~ item.id) }}">
                             {{ item.product_name }}
@@ -18,14 +18,14 @@
                         </p>
                     {% endif %}
                     <hr />
-                </div>
+                </article>
             {% endfor %}
-        </div>
+        </section>
 
-        <div class="col s4">
+        <section class="col s4">
             <h1>Refine your search 😋</h1>
             {% include 'partials/search-form.twig' %}
-        </div>
+        </section>
     </div>
 
     <div class="row">

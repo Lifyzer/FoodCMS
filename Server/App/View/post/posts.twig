@@ -1,14 +1,16 @@
 {% extends "layouts/base.twig" %}
 
 {% block content %}
-    {% for post in posts %}
-        <div class="row border">
-            <h1>
-                <a href="{{ url('post/' ~ post) }}">
-                    {{ post|replace({'-': ' '})|title }}
-                </a>
-            </h1>
-            <hr />
-        </div>
-    {% endfor %}
+    <section>
+        {% for post in posts %}
+            <article class="row border">
+                <h1>
+                    <a href="{{ url('post/' ~ post) }}">
+                        {{ post|replace({'-': ' '})|title }}
+                    </a>
+                </h1>
+                <hr />
+            </article>
+        {% endfor %}
+    </section>
 {% endblock %}

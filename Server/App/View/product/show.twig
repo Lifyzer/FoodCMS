@@ -2,54 +2,57 @@
 
 {% block content %}
     <div class="row">
-        <div class="col s8">
-           <h2>{{ item.product_name }}</h2>
+        <section class="col s8">
+            <header>
+                <h2>{{ item.product_name }}</h2>
+            </header>
 
-            <!-- Chart.js -->
-            <dl class="center">
-                {% if item.ingredients %}
-                    <dt>🌮 Ingredients</dt>
-                    <dd>{{ item.ingredients }}</dd>
-                {% endif %}
+            <article>
+                <dl class="center">
+                    {% if item.ingredients %}
+                        <dt>🌮 Ingredients</dt>
+                        <dd>{{ item.ingredients }}</dd>
+                    {% endif %}
 
-                {% if item.salt %}
-                    <dt>🧂 Salt</dt>
-                    <dd>{{ item.salt }}gr</dd>
-                {% endif %}
+                    {% if item.salt %}
+                        <dt>🧂 Salt</dt>
+                        <dd>{{ item.salt }}gr</dd>
+                    {% endif %}
 
-                {% if item.sugar %}
-                    <dt>🍪 Sugar</dt>
-                    <dd>{{ item.sugar }}</dd>
-                {% endif %}
+                    {% if item.sugar %}
+                        <dt>🍪 Sugar</dt>
+                        <dd>{{ item.sugar }}</dd>
+                    {% endif %}
 
-                {% if item.protein %}
-                    <dt>🥚 Protein</dt>
-                    <dd>{{ item.protein }}</dd>
-                {% endif %}
+                    {% if item.protein %}
+                        <dt>🥚 Protein</dt>
+                        <dd>{{ item.protein }}</dd>
+                    {% endif %}
 
-                {% if item.carbohydrate %}
-                    <dt>🥛 Carbohydrate</dt>
-                    <dd>{{ item.carbohydrate }}</dd>
-                {% endif %}
+                    {% if item.carbohydrate %}
+                        <dt>🥛 Carbohydrate</dt>
+                        <dd>{{ item.carbohydrate }}</dd>
+                    {% endif %}
 
-                {% if item.dietary_fiber %}
-                    <dt>Fiber</dt>
-                    <dd>{{ item.dietary_fiber }}</dd>
-                {% endif %}
+                    {% if item.dietary_fiber %}
+                        <dt>Fiber</dt>
+                        <dd>{{ item.dietary_fiber }}</dd>
+                    {% endif %}
 
-                {% if item.sodium %}
-                    <dt>Sodium</dt>
-                    <dd>{{ item.sodium }}</dd>
-                {% endif %}
+                    {% if item.sodium %}
+                        <dt>Sodium</dt>
+                        <dd>{{ item.sodium }}</dd>
+                    {% endif %}
 
-                {% if item.alcohol %}
-                    <dt>🍸 Alcohol</dt>
-                    <dd>{{ item.alcohol }}</dd>
-                {% endif %}
-            </dl>
-        </div>
+                    {% if item.alcohol %}
+                        <dt>🍸 Alcohol</dt>
+                        <dd>{{ item.alcohol }}</dd>
+                    {% endif %}
+                </dl>
+            </article>
+        </section>
 
-        <div class="col s4">
+        <section class="col s4">
             <p>
                 {% if item.product_image %}
                     {% set productImage, productAlt = item.product_image, item.product_name %}
@@ -67,7 +70,7 @@
                 <a class="a2a_button_facebook_messenger"></a>
                 <a class="a2a_button_whatsapp"></a>
             </div>
-        </div>
+        </section>
     </div>
 
     {% include 'partials/disqus.twig' %}
