@@ -38,7 +38,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Lifyzer\\": "Server"
+      "Lifyzer\\Server\\": "Server"
     }
   },
   "autoload-dev": {
