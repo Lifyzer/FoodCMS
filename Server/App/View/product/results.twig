@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="row">
-        <section class="col s8">
+        <section class="col s12 m8">
             <h2>Food Details for <span class="underline">{{ keywords|capitalize }}</span></h2>
 
             {% for item in items %}
@@ -22,7 +22,7 @@
             {% endfor %}
         </section>
 
-        <section class="col s4">
+        <section class="col s12 m4">
             <h1>Refine your search 😋</h1>
             {% include 'partials/search-form.twig' %}
         </section>
