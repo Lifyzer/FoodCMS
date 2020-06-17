@@ -1,3 +1,29 @@
+# Deny access to all CGI, Perl, Python, Bash, SQL, Template, INI configuration, .env, cache, log, temporary and text files
+<FilesMatch "\.(env|cgi|pl|py|sh|bash|sql|tpl|ini|cache|log|tmp|txt|md)$">
+    # Apache 2.4+
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+
+    # Apache 2.2
+    <IfModule !mod_authz_core.c>
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Deny access to all composer.json and error_log files
+<FilesMatch "composer\.json|error_log">
+    # Apache 2.4+
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+
+    # Apache 2.2
+    <IfModule !mod_authz_core.c>
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
