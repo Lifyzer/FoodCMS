@@ -2,6 +2,8 @@
 
 **FoodCMS™** is a real "Food CMS" solution and a "Food Search Engine" 💪 to make foodstuffs much more transparent than it has never been before! 🙂
 
+![Healthy Food CMS](static/img/broccoli-food-cms.svg)
+
 
 ## The Requirements ⚙️
 
