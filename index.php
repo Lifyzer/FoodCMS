@@ -19,10 +19,11 @@ use Lifyzer\Server\Core\Container\Provider\Twig as TwigContainer;
 use Lifyzer\Server\Core\Debug;
 use Lifyzer\Server\Core\Uri\Router;
 use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run as WhoopsRun;
 
 require __DIR__ . '/Server/vendor/autoload.php';
 
-$whoops = new \Whoops\Run;
+$whoops = new WhoopsRun;
 $whoops->pushHandler(new PrettyPageHandler);
 $whoops->register();
 
