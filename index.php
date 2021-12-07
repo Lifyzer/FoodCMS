@@ -41,8 +41,8 @@ $env = Dotenv::createImmutable(__DIR__ . '/Server/config');
 $env->load();
 $env->required($requiredEnvFields)->notEmpty();
 
-define('SITE_NAME', getenv('SITE_NAME'));
-define('SITE_URL', getenv('SITE_URL'));
+define('SITE_NAME', $_ENV['SITE_NAME']);
+define('SITE_URL', $_ENV['SITE_URL']);
 Debug::initializeMode();
 
 $container = new Container();
@@ -50,7 +50,7 @@ $container->register(TwigContainer::class, new TwigContainer());
 $container->register(DatabaseContainer::class, new DatabaseContainer());
 $container->register(HttpRequestContainer::class, new HttpRequestContainer());
 $container->register(SwiftMailerContainer::class, new SwiftMailerContainer());
-$container->register(MonologContainer::class, new MonologContainer(getenv('LOGGING_CHANNEL')));
+$container->register(MonologContainer::class, new MonologContainer($_ENV['LOGGING_CHANNEL']));
 
 $dispatcher = require __DIR__ . '/Server/config/routes.php';
 $router = new Router($dispatcher, $container);
