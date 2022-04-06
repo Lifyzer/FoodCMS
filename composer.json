@@ -18,23 +18,23 @@
     "autoloader-suffix": "Lifyzer"
   },
   "require": {
-    "php": ">=7.2.0",
+    "php": ">=7.2",
     "nikic/fast-route": "^1.3",
     "twig/twig": "^2.4",
     "swiftmailer/swiftmailer": "^6.0",
-    "vlucas/phpdotenv": "^4.1",
+    "vlucas/phpdotenv": "^5.4",
     "shrikeh/teapot": "^2.3",
     "monolog/monolog": "^1.23",
     "psr/log": "^1.0",
-    "psr/container": "^1.0",
+    "psr/container": "^1.1",
     "symfony/http-foundation": "^4.0",
     "filp/whoops": "2.*",
     "pagerfanta/pagerfanta": "^2.0",
     "erusev/parsedown": "^1.7"
   },
   "require-dev": {
-    "phpunit/phpunit": "^6.5",
-    "phake/phake": "^3.0"
+    "phpunit/phpunit": "^8.5",
+    "phake/phake": "^4.0"
   },
   "autoload": {
     "psr-4": {
@@ -45,5 +45,8 @@
     "psr-4": {
       "Lifyzer\\Test\\": "Test"
     }
+  },
+  "scripts": {
+    "test": "Server/vendor/bin/phpunit"
   }
 }

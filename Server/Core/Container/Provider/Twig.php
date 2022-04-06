@@ -31,7 +31,7 @@ class Twig implements Providable
 
     private function getOptions(string $rootPath): array
     {
-        $cacheStatus = filter_var(getenv('CACHE'), FILTER_VALIDATE_BOOLEAN);
+        $cacheStatus = filter_var($_ENV['CACHE'], FILTER_VALIDATE_BOOLEAN);
 
         return [
             'cache' => $cacheStatus ? $rootPath . self::CACHE_FOLDER : false,

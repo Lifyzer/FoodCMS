@@ -12,8 +12,10 @@ Server/log/*
 *.log
 *.tmp
 
-# PHPUnit coverage
+# PHPUnit
 coverage
+phpunit.xml
+.phpunit.result.cache
 
 # PhpStorm
 .idea

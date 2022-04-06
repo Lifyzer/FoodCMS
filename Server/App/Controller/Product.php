@@ -58,7 +58,7 @@ class Product extends Base
                     'siteUrl' => SITE_URL,
                     'siteName' => SITE_NAME,
                     'pageName' => $productData->product_name,
-                    'chatSupportId' => getenv('SUPPORT_CHAT_ID'),
+                    'chatSupportId' => $_ENV['SUPPORT_CHAT_ID'],
                     'item' => $productData,
                     'itemPlaceholder' => SITE_URL . 'static/img/product/noimage.svg'
                 ]
@@ -81,7 +81,7 @@ class Product extends Base
                 'siteUrl' => SITE_URL,
                 'siteName' => SITE_NAME,
                 'pageName' => 'Search a product',
-                'chatSupportId' => getenv('SUPPORT_CHAT_ID'),
+                'chatSupportId' => $_ENV['SUPPORT_CHAT_ID'],
             ]
         );
     }
@@ -120,7 +120,7 @@ class Product extends Base
                             'siteUrl' => SITE_URL,
                             'siteName' => SITE_NAME,
                             'pageName' => 'Food Item Results',
-                            'chatSupportId' => getenv('SUPPORT_CHAT_ID'),
+                            'chatSupportId' => $_ENV['SUPPORT_CHAT_ID'],
                             'keywords' => $keywords,
                             'items' => $items,
                             'nearbyPagesLimit' => self::NEARBY_PAGES_LIMIT,

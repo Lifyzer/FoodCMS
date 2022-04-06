@@ -15,7 +15,7 @@ class Debug
     public static function initializeMode(): void
     {
         // First, convert "true/false" string from phpdotenv to boolean
-        $debugMode = filter_var(getenv('DEBUG_MODE'), FILTER_VALIDATE_BOOLEAN);
+        $debugMode = filter_var($_ENV['DEBUG_MODE'], FILTER_VALIDATE_BOOLEAN);
         define('DEBUG_MODE', $debugMode);
 
         if ($debugMode) {
