@@ -2,6 +2,7 @@ node_modules
 Server/vendor
 composer.lock
 composer.phar
+package-lock.json
 Server/config/.env
 Server/cache/*
 !Server/cache/.gitkeep

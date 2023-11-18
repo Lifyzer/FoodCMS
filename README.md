@@ -9,13 +9,15 @@
 
 * 🐘 [PHP 7.2](https://php.net/releases/7_2_0.php) or newer
 * 🎻 [Composer](https://getcomposer.org)
+* [NPM](https://nodejs.org/en/download)
 
 
 ## Setting It Up ⚙️
 
-1. Run `composer install` to install the project's dependencies.
-2. In `~/Server/config/` folder, rename `.env.dist` to `.env` and edit the details in there.
-3. Start a local development server `php -S 127.0.0.1:8080`
+1. Run `composer install` to install the backend project's dependencies.
+2. Run `npm install` to install the frontend dependencies such as Matarialize, Material Icons, and Chart.js.
+3. In `~/Server/config/` folder, rename `.env.dist` to `.env` and edit the details in there.
+4. Start a local development server `php -S 127.0.0.1:8080`
 
 
 ## The Creator! 💡
