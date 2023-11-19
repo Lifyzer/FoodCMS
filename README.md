@@ -9,7 +9,7 @@
 
 * 🐘 [PHP 7.2](https://php.net/releases/7_2_0.php) or newer
 * 🎻 [Composer](https://getcomposer.org)
-* [NPM](https://nodejs.org/en/download)
+* 📦 [NPM](https://nodejs.org/en/download)
 
 
 ## Setting It Up ⚙️
