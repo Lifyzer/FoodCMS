@@ -31,7 +31,7 @@ You can always reach me at *hi [[AT]] ph7 [[D0T]] me*! I will be pleased to talk
 
 ☕️ Are you enjoying my work? **[Offer me a coffee](https://ko-fi.com/phenry)** and boost the software development at the same time! 💪
 
-[![@phenrysay](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/phenrysay "Follow Me on Twitter") [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7 "My GitHub")
+[![@phenrysay](https://img.shields.io/badge/X-100000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/phenrysay "Follow Me on X") [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7 "My GitHub")
 
 
 ## Project Website 🚀
