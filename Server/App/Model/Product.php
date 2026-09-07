@@ -28,13 +28,13 @@ class Product
         $this->db = $container->get(Database::class);
     }
 
-    public function get(int $productId): stdClass
+    public function get(int $productId): ?stdClass
     {
         $stmt = $this->db->prepare(self::QUERY_GET_PRODUCT);
         $stmt->bindValue('productId', $productId, PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->fetchObject();
+        return $stmt->fetchObject() ?: null;
     }
 
     public function search(string $keywords, int $offset = null, int $limit = null): array
